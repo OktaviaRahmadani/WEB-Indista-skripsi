@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+<div class="payment-container">
+  <!-- Progress Steps -->
+  <div class="progress-steps">
+    <div class="step completed">
+      <div class="step-circle"></div>
+      <span>Booking</span>
+    </div>
+    <div class="step-line completed"></div>
+    <div class="step active">
+      <div class="step-circle"></div>
+      <span>Pembayaran</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"></div>
+      <span>Selesai</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Left Column -->
+    <div class="left-column">
+      <h2>Metode Pembayaran</h2>
+      
+      <div class="payment-section">
+        <h3>Bank Transfer</h3>
+        
+        <div class="bank-options">
+          <div class="bank-option selected">
+            <img src="https://csspicker.dev/api/image/?q=bca+bank+logo&image_type=vector" alt="BCA" class="bank-logo">
+            <span>BCA</span>
+          </div>
+          
+          <div class="bank-option">
+            <img src="https://csspicker.dev/api/image/?q=bri+bank+logo&image_type=vector" alt="BRI" class="bank-logo">
+            <span>BRI</span>
+          </div>
+          
+          <div class="bank-option">
+            <img src="https://csspicker.dev/api/image/?q=bni+bank+logo&image_type=vector" alt="BNI" class="bank-logo">
+            <span>BNI</span>
+          </div>
+          
+          <div class="bank-option">
+            <img src="https://csspicker.dev/api/image/?q=mandiri+bank+logo&image_type=vector" alt="Mandiri" class="bank-logo">
+            <span>Mandiri</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-section">
+        <h3>Total Harga</h3>
+        
+        <div class="price-breakdown">
+          <div class="price-item">
+            <span>Mobil 1 hari</span>
+            <span>Rp. 450.000,-</span>
+          </div>
+          <div class="price-item">
+            <span>Lokasi Pengambilan</span>
+            <span>Rp. 100.000,-</span>
+          </div>
+          <div class="price-item">
+            <span>Pajak</span>
+            <span>free</span>
+          </div>
+        </div>
+        
+        <div class="total-price">
+          <span class="total-label">Total Harga</span>
+          <span class="total-amount">Rp. 550.000,-</span>
+        </div>
+        
+        <button class="pay-button">BAYAR</button>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <div class="booking-details">
+        <div class="booking-header">
+          <h3>ID Booking</h3>
+          <span class="booking-id">311291OCCA</span>
+        </div>
+        
+        <div class="car-info">
+          <div class="car-details">
+            <h4>TERIOS</h4>
+            <span class="car-type">Tanpa Driver</span>
+          </div>
+          <img src="https://csspicker.dev/api/image/?q=red+suv+car&image_type=photo" alt="Terios" class="car-image">
+        </div>
+        
+        <div class="datetime-section">
+          <h4>Tanggal & Waktu Mulai</h4>
+          <div class="datetime-info">
+            <div class="date-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+              <span>Sabtu, 12 Januari 2025</span>
+            </div>
+            <div class="time-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/>
+              </svg>
+              <span>12:00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="location-section">
+          <h4>Lokasi Penjemputan</h4>
+          <div class="location-info">
+            <svg class="icon location-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+            </svg>
+            <span>Jl. Raya Pasar Minggu No.123, Jakarta Selatan</span>
+          </div>
+        </div>
+        
+        <div class="datetime-section">
+          <h4>Tanggal & Waktu Selesai</h4>
+          <div class="datetime-info">
+            <div class="date-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+              <span>Senin, 13 Januari 2025</span>
+            </div>
+            <div class="time-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/>
+              </svg>
+              <span>12:00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="location-section">
+          <h4>Lokasi Pengembalian</h4>
+          <div class="location-info">
+            <svg class="icon location-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+            </svg>
+            <span>Jl. Taman Mini Indonesia Indah, Ceger, Kec. Cipayung, Kota Jakarta Timur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

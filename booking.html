@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Booking</title>
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+<div class="booking-container">
+  <!-- Progress Steps -->
+  <div class="progress-steps">
+    <div class="step active">
+      <div class="step-circle active"></div>
+      <span class="step-label active">Booking</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"></div>
+      <span class="step-label">Pembayaran</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"></div>
+      <span class="step-label">Selesai</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Kolom Kiri -->
+    <div class="left-column">
+      <div class="card">
+        <h2>Detail Pribadi</h2>
+        <div class="form-group">
+          <input type="text" placeholder="Masukan Nama" class="form-input">
+        </div>
+        <div class="form-group phone-group">
+          <div class="country-code">
+            <img src="https://flagcdn.com/w40/id.png" alt="ID" class="flag-icon">
+            <span>+62</span>
+          </div>
+          <input type="text" class="form-input phone-input" placeholder="812xxxxxxx">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Masukan Alamat" class="form-input">
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="driver" checked>
+          <label for="driver">Sebagai Driver</label>
+        </div>
+        <div class="upload-section">
+          <div class="upload-group">
+            <label>Unggah KTP</label>
+            <button class="upload-btn">Upload</button>
+          </div>
+          <div class="upload-group">
+            <label>Unggah SIM</label>
+            <button class="upload-btn">Upload</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Data Kerabat Dekat</h2>
+        <div class="form-group">
+          <input type="text" placeholder="Nama Lengkap" class="form-input">
+        </div>
+        <div class="form-group phone-group">
+          <div class="country-code">
+            <img src="https://flagcdn.com/w40/id.png" alt="ID" class="flag-icon">
+            <span>+62</span>
+          </div>
+          <input type="text" class="form-input phone-input">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Alamat Kerabat" class="form-input">
+        </div>
+        <div class="form-group">
+          <select class="form-input">
+            <option>Hubungan</option>
+            <option>Saudara</option>
+            <option>Teman</option>
+            <option>Rekan Kerja</option>
+          </select>
+        </div>
+        <button class="send-btn">Kirim</button>
+      </div>
+
+      <div class="card">
+        <h3>Permintaan Khusus</h3>
+        <textarea class="form-textarea" placeholder="Contoh: lokasi parkir mudah dijangkau, tersedia charger..."></textarea>
+      </div>
+
+      <div class="card">
+        <h3>Kebijakan Pembatalan</h3>
+        <div class="total-section">
+          <h3>Total</h3>
+          <div class="price">Rp. 450.000,-</div>
+        </div>
+        <button class="continue-btn">Lanjut Pembayaran</button>
+      </div>
+    </div>
+
+    <!-- Kolom Kanan -->
+    <div class="right-column">
+      <div class="card">
+        <div class="booking-header">
+          <h2>ID Booking</h2>
+          <span class="booking-id">311291OCCA</span>
+        </div>
+
+        <div class="car-section">
+          <div class="car-info">
+            <h3>TERIOS</h3>
+            <p>Tanpa Driver</p>
+          </div>
+          <img src="https://via.placeholder.com/100x60?text=Mobil" class="car-image" alt="Mobil">
+        </div>
+
+        <div class="datetime-section">
+          <h3>Tanggal & Waktu Mulai</h3>
+          <div class="datetime-item"><span class="date-icon">📅</span> Sabtu, 12 Januari 2025</div>
+          <div class="datetime-item"><span class="time-icon">🕐</span> 12:00</div>
+        </div>
+
+        <div class="location-section">
+          <h3>Lokasi Penjemputan</h3>
+          <div class="location-item"><span class="location-icon">📍</span> Jl. Raya Pasar Minggu No.123</div>
+        </div>
+
+        <div class="datetime-section">
+          <h3>Tanggal & Waktu Selesai</h3>
+          <div class="datetime-item"><span class="date-icon">📅</span> Senin, 13 Januari 2025</div>
+          <div class="datetime-item"><span class="time-icon">🕐</span> 12:00</div>
+        </div>
+
+        <div class="location-section">
+          <h3>Lokasi Pengembalian</h3>
+          <div class="location-item"><span class="location-icon">📍</span> Jl. Taman Mini Indonesia Indah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

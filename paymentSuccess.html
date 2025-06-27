@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pembayaran Sukses</title>
+  <link rel="stylesheet" href="paymentSuccess.css" />
+</head>
+<body>
+
+<div class="payment-success-container">
+  <!-- Progress Steps -->
+  <div class="progress-steps">
+    <div class="step completed">
+      <div class="step-circle"></div>
+      <span class="step-label">Booking</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step completed">
+      <div class="step-circle"></div>
+      <span class="step-label">Pembayaran</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step completed">
+      <div class="step-circle"></div>
+      <span class="step-label">Selesai</span>
+    </div>
+  </div>
+
+  <!-- Success Message -->
+  <div class="success-section">
+    <div class="success-icon">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1 class="success-title">Pembayaran Sukses</h1>
+  </div>
+
+  <!-- Car Info -->
+  <div class="car-section">
+    <img src="https://csspicker.dev/api/image/?q=red+suv+car&image_type=photo" alt="TERIOS" class="car-image" />
+    <div class="car-info">
+      <h3 class="car-name">TERIOS</h3>
+      <p class="car-type">Tanpa Driver</p>
+    </div>
+  </div>
+
+  <!-- Rental Details -->
+  <div class="rental-details">
+    <div class="detail-row">
+      <div class="detail-item">
+        <div class="icon-wrapper red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="detail-content">
+          <h4>Mulai Sewa</h4>
+          <p>Sabtu, 12 Januari 2025</p>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="icon-wrapper red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="detail-content">
+          <h4>Selesai Sewa</h4>
+          <p>Senin, 13 Januari 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-row">
+      <div class="detail-item">
+        <div class="icon-wrapper red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="detail-content">
+          <h4>Lokasi Penjemputan</h4>
+          <p>Jl. Raya Pasar Minggu No.123, Jakarta Selatan</p>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="icon-wrapper red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="detail-content">
+          <h4>Lokasi Pengembalian</h4>
+          <p>Jl. Taman Mini Indonesia Indah, Ceger, Kec. Cipayung, Kota Jakarta Timur</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Summary -->
+  <div class="booking-summary">
+    <div class="summary-row">
+      <span class="summary-label">ID Booking</span>
+      <span class="summary-value">3112910CCA</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Tanggal Pembayaran</span>
+      <span class="summary-value">Jumat, 11 Januari 2025</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Metode Pembayaran</span>
+      <span class="summary-value">Transfer Mandiri</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Total</span>
+      <span class="summary-value">Rp. 550.000,-</span>
+    </div>
+  </div>
+
+  <!-- Finish Button -->
+  <button class="finish-button">SELESAI</button>
+</div>
+
+</body>
+</html>

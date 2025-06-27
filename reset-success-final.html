@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440, initial-scale=1.0" />
+  <title>Reset Password Berhasil</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .success-box {
+      background: white;
+      padding: 60px 50px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .success-box img {
+      width: 100px;
+      margin-bottom: 25px;
+    }
+
+    .success-box h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    .success-box p {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .success-box a {
+      text-decoration: none;
+      color: #e60000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-box">
+    <img src="images/success-icon.png" alt="Berhasil" />
+    <h3>Terima kasih.</h3>
+    <p>Anda akan diarahkan ke<br>halaman login dalam <span id="countdown">5</span> detik...</p>
+    <p>Klik <a href="login.html">di sini</a> jika Anda tidak diarahkan secara otomatis.</p>
+  </div>
+
+  <script>
+    let countdown = 5;
+    const counter = document.getElementById("countdown");
+    const interval = setInterval(() => {
+      countdown--;
+      counter.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(interval);
+        window.location.href = "login.html"; // Ganti sesuai file login kamu
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

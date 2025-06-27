@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pembayaran</title>
+  <link rel="stylesheet" href="confirmPayment.css">
+</head>
+
+<body>
+  <div class="confirm-payment-container">
+    <!-- Progress Steps -->
+    <div class="progress-steps">
+      <div class="step active">
+        <div class="step-circle active"></div>
+        <span class="step-label active">Booking</span>
+      </div>
+      <div class="step-line active"></div>
+      <div class="step active">
+        <div class="step-circle active"></div>
+        <span class="step-label active">Pembayaran</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-circle"></div>
+        <span class="step-label">Selesai</span>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <!-- Left Column -->
+      <div class="left-section">
+        <div class="header">
+          <h2>Transfer Mandiri</h2>
+          <div class="booking-id">
+            <span class="id-label">ID Booking</span>
+            <span class="id-value">311291OCCA</span>
+          </div>
+        </div>
+
+        <div class="countdown-alert">
+          <svg class="clock-icon" width="16" height="16" viewBox="0 0 16 16">
+            <circle cx="8" cy="8" r="7" stroke="white" stroke-width="2" fill="none" />
+            <path d="M8 4v4l3 3" stroke="white" stroke-width="2" fill="none" />
+          </svg>
+          <span>Selesaikan Pembayaran dalam 00:24:17</span>
+        </div>
+
+        <div class="transfer-section">
+          <h3>Transfer ke</h3>
+          <div class="bank-info">
+            <div class="bank-logo">
+              <img src="https://csspicker.dev/api/image/?q=mandiri+bank+logo&image_type=vector" alt="Mandiri">
+            </div>
+            <span>Virtual Account</span>
+          </div>
+          <div class="account-info">
+            <div class="account-label">Nomor Virtual Account</div>
+            <div class="account-number">8812510934857201</div>
+          </div>
+        </div>
+
+        <div class="payment-methods">
+          <h3>Cara pembayaran</h3>
+          <div class="method-item">ATM</div>
+          <div class="method-item">Mobile Banking</div>
+          <div class="method-item">Internet Banking</div>
+        </div>
+
+        <div class="price-breakdown">
+          <h3>Total Harga</h3>
+          <div class="price-item">
+            <span>Mobil 1 hari</span>
+            <span>Rp. 450.000,-</span>
+          </div>
+          <div class="price-item">
+            <span>Lokasi Pengambilan</span>
+            <span>Rp. 100.000,-</span>
+          </div>
+          <div class="price-item">
+            <span>Pajak</span>
+            <span>free</span>
+          </div>
+          <div class="total-price">
+            <span>Total Harga</span>
+            <span>Rp. 550.000,-</span>
+          </div>
+        </div>
+
+        <button class="confirm-button">KONFIRMASI PEMBAYARAN</button>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-section">
+        <div class="booking-details">
+          <div class="booking-header">
+            <span class="booking-title">ID Booking</span>
+            <span class="booking-id-right">311291OCCA</span>
+          </div>
+
+          <div class="car-section">
+            <div class="car-info">
+              <h4>TERIOS</h4>
+              <span class="driver-info">Tanpa Driver</span>
+            </div>
+            <img src="https://csspicker.dev/api/image/?q=red+suv+car+terios&image_type=photo" alt="Red Terios" class="car-image">
+          </div>
+
+          <div class="datetime-section">
+            <h4>Tanggal & Waktu Mulai</h4>
+            <div class="date-info">
+              <svg class="calendar-icon" width="16" height="16" viewBox="0 0 16 16">
+                <rect x="2" y="3" width="12" height="11" rx="1" stroke="#ff4444" fill="none" />
+                <path d="M5 1v2M11 1v2M2 7h12" stroke="#ff4444" />
+              </svg>
+              <span>Sabtu, 12 Januari 2025</span>
+            </div>
+            <div class="time-info">
+              <svg class="clock-icon-small" width="16" height="16" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="7" stroke="#ff4444" fill="none" />
+                <path d="M8 4v4l3 3" stroke="#ff4444" fill="none" />
+              </svg>
+              <span>12:00</span>
+            </div>
+          </div>
+
+          <div class="location-section">
+            <h4>Lokasi Penjemputan</h4>
+            <div class="location-info">
+              <svg class="location-icon" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8 1a5 5 0 0 0-5 5c0 3 5 9 5 9s5-6 5-9a5 5 0 0 0-5-5z" fill="#ff4444" />
+                <circle cx="8" cy="6" r="2" fill="white" />
+              </svg>
+              <span>Jl. Raya Pasar Minggu No.123, Jakarta Selatan</span>
+            </div>
+          </div>
+
+          <div class="datetime-section">
+            <h4>Tanggal & Waktu Selesai</h4>
+            <div class="date-info">
+              <svg class="calendar-icon" width="16" height="16" viewBox="0 0 16 16">
+                <rect x="2" y="3" width="12" height="11" rx="1" stroke="#ff4444" fill="none" />
+                <path d="M5 1v2M11 1v2M2 7h12" stroke="#ff4444" />
+              </svg>
+              <span>Senin, 13 Januari 2025</span>
+            </div>
+            <div class="time-info">
+              <svg class="clock-icon-small" width="16" height="16" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="7" stroke="#ff4444" fill="none" />
+                <path d="M8 4v4l3 3" stroke="#ff4444" fill="none" />
+              </svg>
+              <span>12:00</span>
+            </div>
+          </div>
+
+          <div class="location-section">
+            <h4>Lokasi Pengembalian</h4>
+            <div class="location-info">
+              <svg class="location-icon" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8 1a5 5 0 0 0-5 5c0 3 5 9 5 9s5-6 5-9a5 5 0 0 0-5-5z" fill="#ff4444" />
+                <circle cx="8" cy="6" r="2" fill="white" />
+              </svg>
+              <span>Jl. Taman Mini Indonesia Indah, Ceger, Kec. Cipayung, Kota Jakarta Timur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
