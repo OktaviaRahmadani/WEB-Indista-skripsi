@@ -1,0 +1,515 @@
+/* === Reset & Global === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000; /* Ubah ke hitam untuk konsistensi */
+}
+
+/* === Header === */
+/* === Header === */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #000;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-area img {
+  width: 175px;
+  height: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #ff0000;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-icon {
+  color: white;
+}
+.dropdown-item img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  color: #ff0000;
+}
+
+.dropdown-menu {
+  background: white !important;
+  color: #333;
+}
+
+
+/* === LOGIN BUTTON === */
+.login-button {
+  background: red;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 13px;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
+}
+
+.login-button:hover {
+  background: darkred;
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #ff4444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+
+/* ========== HERO SECTION ========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000; /* Pastikan background hitam */
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blur-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blur-circle {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.blur-circle.red {
+  background: radial-gradient(circle, #ff0000, transparent 70%);
+  top: 10%;
+  right: 10%;
+  animation-delay: 0.5s;
+}
+
+.blur-circle.green {
+  background: radial-gradient(circle, #00ff00, transparent 70%);
+  bottom: 10%;
+  left: 15%;
+  animation-delay: 1s;
+}
+
+.carrousel-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.carrousel-track {
+  display: flex;
+  width: 300%;
+  transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  height: 80%;
+}
+
+.carrousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: contain;
+  max-height: 70vh;
+}
+
+.hero-text {
+  position: absolute;
+  z-index: 4;
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-30px) scale(1.03) rotate(2deg);
+  }
+  50% {
+    transform: translateY(10px) scale(0.98) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.01) rotate(1deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* === TRANSISI DARI HITAM KE PUTIH === */
+.section-transition {
+  height: 100px;
+  background: linear-gradient(to bottom, #000, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: #000;
+  border-radius: 0 0 50% 50% / 0 0 100px 100px;
+  transform: scaleX(1.5);
+}
+
+/* === Cars Section - BACKGROUND PUTIH === */
+.cars-section {
+  background-color: #ffffff; /* Background putih untuk section mobil */
+  padding: 80px 50px 50px; /* Tambah padding atas untuk spacing */
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #000; /* Ubah warna teks jadi hitam */
+  position: relative;
+  z-index: 5;
+}
+
+.car-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Shadow lebih kontras */
+  border: 1px solid #e0e0e0; /* Tambah border tipis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.car-image {
+  width: 200px;
+  height: 120px;
+  margin-right: 30px;
+}
+
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: slideAlternate 4s ease-in-out infinite;
+}
+
+.car-card:nth-child(even) .car-image img {
+  animation: slideAlternateReverse 4s ease-in-out infinite;
+}
+
+@keyframes slideAlternate {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+}
+
+@keyframes slideAlternateReverse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
+}
+
+.car-info {
+  flex: 1;
+}
+
+.car-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.car-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.car-price-section {
+  text-align: right;
+}
+
+.car-price-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.car-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.rent-button {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.rent-button:hover {
+  background-color: #e63939;
+  transform: translateY(-2px);
+}
+
+/* === WRAPPER UNTUK CARS SECTION === */
+.cars-wrapper {
+  background-color: #ffffff;
+  width: 100%;
+  position: relative;
+}
+
+/* === Footer === */
+
+.site-footer {
+  background-color: #161414;
+  color: #fff;
+  padding: 60px 80px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.footer-top h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.footer-top p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-left h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 30px 0 10px;
+}
+
+.footer-left p {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.footer-left input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 14px;
+  background: #333;
+  border: none;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.footer-left button {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: #888;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.social-icons img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.footer-map {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 40px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+footer hr {
+  border: 0;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+}
+
+/* Animasi gambar mobil */
+@keyframes slideLeft {
+  0%, 20% { transform: translateX(0); }
+  50%, 70% { transform: translateX(-20px); }
+  100% { transform: translateX(0); }
+}
+
+.car-image img {
+  animation: slideLeft 4s ease-in-out infinite;
+}
+
+.cars-section .car-card:nth-child(1) .car-image img { animation-delay: 0s; }
+.cars-section .car-card:nth-child(2) .car-image img { animation-delay: 0.8s; }
+.cars-section .car-card:nth-child(3) .car-image img { animation-delay: 1.6s; }
+.cars-section .car-card:nth-child(4) .car-image img { animation-delay: 2.4s; }
+.cars-section .car-card:nth-child(5) .car-image img { animation-delay: 3.2s; }

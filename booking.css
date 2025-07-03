@@ -183,6 +183,20 @@ body {
   background-color: #e60000;
 }
 
+/* Status berhasil */
+.upload-btn.success {
+  background-color: #28a745; /* Hijau */
+}
+
+.upload-btn.success:hover {
+  background-color: #218838;
+}
+
+.upload-btn.success::after {
+  content: " - Berhasil";
+  font-weight: bold;
+}
+
 /* Textarea */
 .form-textarea {
   width: 100%;

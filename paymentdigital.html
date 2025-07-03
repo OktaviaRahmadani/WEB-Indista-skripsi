@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pembayaran</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .confirm-payment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .progress-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .step-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      background: white;
+    }
+    .step-circle.active {
+      border-color: #ff4444;
+      background: #ff4444;
+    }
+    .step-line {
+      width: 80px;
+      height: 2px;
+      background: #ccc;
+      margin: 0 10px;
+    }
+    .step-line.active {
+      background: #ff4444;
+    }
+    .step-label {
+      font-size: 14px;
+      color: #666;
+    }
+    .step-label.active {
+      color: #ff4444;
+    }
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    .left-section, .right-section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .booking-id {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .id-label, .id-value {
+      color: #999;
+      font-size: 14px;
+    }
+    .countdown-alert {
+      background: #ff4444;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    .transfer-section h3, .payment-methods h3, .price-breakdown h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    .bank-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .bank-logo img {
+      width: 40px;
+      height: auto;
+    }
+    .account-info {
+      margin-bottom: 20px;
+    }
+    .account-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .account-number {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      letter-spacing: 1px;
+    }
+    .method-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .method-item:last-child {
+      border-bottom: none;
+    }
+    .method-detail {
+      display: none;
+      font-size: 14px;
+      color: #444;
+      padding: 10px;
+      background: #f0f0f0;
+      margin-top: 5px;
+      border-radius: 6px;
+    }
+    .method-item.active + .method-detail {
+      display: block;
+    }
+    .price-item, .total-price {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #666;
+    }
+    .total-price {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      border-top: 1px solid #eee;
+      margin-top: 8px;
+    }
+    .confirm-button {
+      width: 100%;
+      background: #ff4444;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .confirm-button:hover {
+      background: #e63939;
+    }
+    .booking-header {
+      margin-bottom: 24px;
+    }
+    .booking-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    .booking-id-right {
+      color: #999;
+      font-size: 14px;
+    }
+    .product-img {
+      margin: 16px 0;
+      width: 100px;
+    }
+    .right-section p {
+      margin: 16px 0;
+    }
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confirm-payment-container">
+    <div class="progress-steps">
+      <div class="step active">
+        <div class="step-circle active"></div>
+        <span class="step-label active">Booking</span>
+      </div>
+      <div class="step-line active"></div>
+      <div class="step active">
+        <div class="step-circle active"></div>
+        <span class="step-label active">Pembayaran</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-circle"></div>
+        <span class="step-label">Selesai</span>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="left-section">
+        <div class="header">
+          <h2>Transfer Mandiri</h2>
+          <div class="booking-id">
+            <span class="id-label">ID Transaksi</span>
+            <span class="id-value">P1751355743670230</span>
+          </div>
+        </div>
+
+        <div class="countdown-alert">
+          <span>Selesaikan Pembayaran dalam <span id="countdown">30:00</span></span>
+        </div>
+
+        <div class="transfer-section">
+          <h3>Transfer ke</h3>
+          <div class="bank-info">
+            <div class="bank-logo">
+              <img src="https://seeklogo.com/images/B/bank-mandiri-logo-8ED145140D-seeklogo.com.png" alt="Mandiri">
+            </div>
+            <span>Virtual Account</span>
+          </div>
+          <div class="account-info">
+            <div class="account-label">Nomor Virtual Account</div>
+            <div class="account-number">8812 5109 3485 7201</div>
+          </div>
+        </div>
+
+        <div class="payment-methods">
+          <h3>Cara Pembayaran</h3>
+          <div class="method-item">ATM</div>
+          <div class="method-detail">Masukkan kartu → pilih menu pembayaran → pilih Virtual Account → masukkan nomor VA di atas → konfirmasi dan bayar</div>
+          <div class="method-item">Mobile Banking</div>
+          <div class="method-detail">Buka aplikasi Livin' Mandiri → pilih Bayar → e-commerce → masukkan VA → lanjutkan hingga selesai</div>
+          <div class="method-item">Internet Banking</div>
+          <div class="method-detail">Login iBanking → pilih Pembayaran → Virtual Account → isi nomor → lanjutkan proses</div>
+        </div>
+
+        <div class="price-breakdown">
+          <h3>Total Harga</h3>
+          <div class="price-item">
+            <span>Paket WeTV VIP 1 Bulan</span>
+            <span>Rp. 49.000,-</span>
+          </div>
+          <div class="price-item">
+            <span>Pajak</span>
+            <span>Gratis</span>
+          </div>
+          <div class="total-price">
+            <span>Total</span>
+            <span>Rp. 49.000,-</span>
+          </div>
+        </div>
+
+        <button class="confirm-button">KONFIRMASI PEMBAYARAN</button>
+      </div>
+
+      <div class="right-section">
+        <div class="booking-header">
+          <span class="booking-title">Detail Transaksi</span>
+          <span class="booking-id-right">P1751355743670230</span>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/WeTV_logo.png" alt="WeTV Logo" class="product-img">
+        <p><strong>Produk:</strong> WeTV VIP 1 Bulan</p>
+        <p><strong>Email:</strong> o***arhamadan1318@gmail.com</p>
+        <p><strong>Tanggal:</strong> 01 Juli 2025 - 14:42</p>
+        <p><strong>Metode Pembayaran:</strong> Mandiri Virtual Account</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    let countdownTime = 30 * 60;
+    const updateCountdown = () => {
+      const minutes = Math.floor(countdownTime / 60);
+      const seconds = countdownTime % 60;
+      countdownElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      if (countdownTime > 0) {
+        countdownTime--;
+      } else {
+        countdownElement.textContent = "Waktu Pembayaran Habis!";
+        countdownElement.style.color = "gray";
+      }
+    };
+    setInterval(updateCountdown, 1000);
+
+    const methodItems = document.querySelectorAll('.method-item');
+    methodItems.forEach(item => {
+      item.addEventListener('click', () => {
+        methodItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -5,30 +5,54 @@
   <meta name="viewport" content="width=1440, initial-scale=1.0">
   <title>Indista - Sewa Mobil</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbot/chatbot.css">
+
+
 </head>
 <body>
+  <!-- Tempatkan ini di body halaman lain yang ingin menampilkan chatbot -->
+<div id="chatbot-container"></div>
 
-<header class="navbar">
+<script>
+  fetch('chatbot.html')  
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('chatbot-container').innerHTML = data;
+    });
+</script>
+
+ <script src="chatbot/chatbot.js"></script>
+
+<header class="header">
   <div class="logo-area">
     <img src="images/logo.png" alt="Logo Indista" class="logo">
   </div>
 
-  <nav class="nav-menu">
-    <ul>
-      <li class="dropdown">
-        <a href="#">PRODUK KAMI <span>▼</span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Sewa Mobil</a></li>
-          <li><a href="#">Indista untuk Bisnis</a></li>
-        </ul>
-      </li>
-      <li><a href="#">BANTUAN</a></li>
-      <li><a href="#">HUBUNGI KAMI</a></li>
-    </ul>
+  <nav class="nav">
+    <div class="nav-item dropdown">
+  <span>PRODUK KAMI</span>
+  <!-- Tetap pakai SVG untuk icon dropdown -->
+  <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="dropdown-menu">
+    <div class="dropdown-item">
+      <!-- Ganti SVG dengan Gambar -->
+      <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+      SEWA KENDARAAN
+    </div>
+    <div class="dropdown-item">
+      <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+      INDISTA UNTUK BISNIS
+    </div>
+  </div>
+</div>
+    <span class="nav-item">PUSAT BANTUAN</span>
+    <span class="nav-item">HUBUNGI KAMI</span>
   </nav>
 
   <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-  
 </header>
 
 
@@ -40,11 +64,23 @@
   </div>
 
   <div class="hero-image-wrapper">
-    <!-- Blur Circle Backgrounds -->
-    <div class="blur-circle red"></div>
-    <div class="blur-circle green"></div>
+
+      <div class="bg-layer"></div>
+      <div class="blur-container">
+        <div class="blur-circle red"></div>
+        <div class="blur-circle green"></div>
+      </div>
+      </div>
+
     <!-- Mobil 3D -->
-    <img src="images/mobil-3d.png" alt="Mobil 3D" class="hero-car">
+    <div class="carrousel-track">
+      
+      <img src="images/mobil-3d.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-black.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-red.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-white.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-blue.png" class="hero-car" alt="Mobil 3D">
+    </div>
   </div>
 
 </section>
@@ -63,18 +99,21 @@
           <label>Lokasi</label>
           <input type="text" placeholder="Pilih lokasi">
         </div>
-        <div class="form-group">
-  <label>Kendaraan</label>
-  <select>
-    <option disabled selected>Pilih Kendaraan</option>
-    <option>DFSK G560 1.5 CVT Turbo – Terios</option>
-    <option>Wuling Confero S</option>
-    <option>Wuling Cortez 1.5 CVT Turbo – Innova</option>
-    <option>Suzuki Carry Pick Up</option>
-    <option>Viar Vintech 200</option>
-    <option>Viar V1 200</option>
-  </select>
+        <div class="form-row">
+  <div class="form-group">
+    <label for="kendaraan">Kendaraan</label> 
+    <select id="kendaraan" class="select-field"> 
+      <option disabled selected>Pilih Kendaraan</option>
+      <option>DFSK G560 1.5 CVT Turbo – Terios</option>
+      <option>Wuling Confero S</option>
+      <option>Wuling Cortez 1.5 CVT Turbo – Innova</option>
+      <option>Suzuki Carry Pick Up</option>
+      <option>Viar Vintech 200</option>
+      <option>Viar V1 200</option>
+    </select>
+  </div>
 </div>
+
       </div>
 
       <div class="form-row">
@@ -102,53 +141,66 @@
   </div>
 </section>
 
-
-<section class="how-to-find">
+<body>
   <div class="container">
-    <h2>CARA TERBAIK UNTUK MENEMUKAN MOBIL FAVORITMU</h2>
-    <p>Sudah terbukti bahwa tampilan menarik dapat membuat orang lebih tertarik untuk memilih mobil impian mereka</p>
+    <!-- Fitur Utama -->
+    <section class="features">
+      <div class="feature-item animate-float-slow">
+        <div class="icon">🚗</div>
+        <h3>Kondisi Mobil Terawat</h3>
+        <p>Perawatan rutin di bengkel resmi untuk kenyamanan maksimal.</p>
+      </div>
+      <div class="feature-item animate-float-slow">
+        <div class="icon">⛽️</div>
+        <h3>Hemat Bahan Bakar</h3>
+        <p>Mobil irit BBM cocok untuk perjalanan harian maupun bisnis.</p>
+      </div>
+      <div class="feature-item animate-float-slow">
+        <div class="icon">📱</div>
+        <h3>Booking Mudah Online</h3>
+        <p>Pesan mobil langsung dari smartphone Anda, tanpa ribet.</p>
+      </div>
+    </section>
 
-    <div class="circle-cards">
-      <!-- CARD 1 -->
-      <div class="circle-card">
-        <div class="circle">
-          <img src="images/step1.png" alt="Pelajari Prosesnya" class="top-img">
-          <h4>PELAJARI PROSESNYA</h4>
-          <p>Butuh bantuan atau info lebih lanjut? Tim kami siap membantu via chat, telepon, atau WhatsApp!</p>
+    <!-- Partner Grid -->
+    <section class="partners">
+      <h2>Solusi Digital Pendukung Perjalanan & Bisnismu</h2>
+      <div class="partner-grid">
+        <div class="partner-item animate-float">
+          <img src="images/eazy.png" alt="Eazy (Telkom)" />
+          <h3>Eazy (Telkom)</h3>
+          <p>Solusi manajemen CCTV dan perangkat IoT untuk keamanan armada dan kantor.</p>
+        </div>
+        <div class="partner-item animate-float">
+          <img src="images/netmonk.jpeg" alt="Netmonk" />
+          <h3>Netmonk</h3>
+          <p>Monitoring performa jaringan digital secara real-time dan proaktif.</p>
+        </div>
+        <div class="partner-item animate-float">
+          <img src="images/produkgameqoo.jpg" alt="GameQoo" />
+          <h3>GameQoo</h3>
+          <p>Cloud gaming platform: hiburan dalam kendaraan tanpa perlu instalasi.</p>
+        </div>
+        <div class="partner-item animate-float">
+          <img src="images/oca.png" alt="OCA Omnichannel" />
+          <h3>OCA Omnichannel</h3>
+          <p>Satu pintu untuk layanan ekspedisi dan logistik online terintegrasi.</p>
         </div>
       </div>
+    </section>
 
-      <!-- CARD 2 -->
-      <div class="circle-card">
-        <div class="circle">
-          <img src="images/step2.png" alt="Ambil Mobilnya" class="top-img">
-          <h4>AMBIL MOBILNYA</h4>
-          <p>Kami pastikan mobil siap jalan saat kamu datang.</p>
-        </div>
+    <!-- Promo Section -->
+    <section class="promo">
+      <div class="promo-content">
+        <h2>Tentang Indista</h2>
+        <p>Indista adalah platform digital yang mengintegrasikan solusi mobilitas dan otomotif modern untuk mendukung bisnis 
+          rental, fleet, logistik, dan hiburan kendaraan. Didukung oleh Eazy dari Telkom, OCA Omnichannel, Netmonk, dan GameQoo, Indista membantu transformasi digital perjalanan Anda.</p>
       </div>
-
-      <!-- CARD 3 -->
-      <div class="circle-card">
-        <div class="circle">
-          <img src="images/step3.png" alt="Pilih Mobil" class="top-img">
-          <h4>PILIH MOBIL</h4>
-          <p>Dari city car hingga mobil keluarga semua tersedia untuk kenyamanan perjalananmu.</p>
-        </div>
+      <div class="promo-image">
+        <img src="images/indista.jpeg" alt="Tentang Indista" />
       </div>
-    </div>
+    </section>
   </div>
-</section>
-
-
-
-<section class="about">
-  <img src="images/car-red.png">
-  <div class="about-text">
-    <h3>TENTANG MOBIL KAMI</h3>
-    <p>Kami menghadirkan mobil berkualitas dengan desain modern, aman, dan nyaman untuk setiap perjalanan Anda. Dengan teknologi terkini dan perawatan terbaik, kami siap menemani Anda ke mana pun tujuan Anda.</p>
-    <button>SELENGKAPNYA</button>
-  </div>
-</section>
 
 <section class="fleet">
   <h2>MOBIL TERBAIK KAMI!</h2>
@@ -216,10 +268,10 @@
       </p>
 
       <div class="social-icons">
-        <img src="images/facebook.svg" alt="Facebook">
-        <img src="images/twitter.svg" alt="Twitter">
-        <img src="images/instagram.svg" alt="Instagram">
-        <img src="images/linkedin.svg" alt="LinkedIn">
+        <img src="images/facebook.png" alt="Facebook">
+        <img src="images/twitter.png" alt="Twitter">
+        <img src="images/instagram.png" alt="Instagram">
+        <img src="images/linkedln.png" alt="LinkedIn">
       </div>
 
       <h3>CONTACT US</h3>
@@ -237,11 +289,62 @@
         width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
+  
+  <!-- CHATBOT TRIGGER -->
+ <img src="images/bot-icon.png" class="chatbot-trigger" onclick="toggleChat(true)" alt="Chatbot">
 
-  <hr>
-  <p class="footer-bottom">PT INOVASI DIGITAL SEMESTA | DIGITAL SOLUTIONS PARTNER</p>
-</footer>
-<script src="script.js"></script>
+ <script src="chatbot/chatbot.js"></script>
+
+<!-- CHATBOT PANEL -->
+<div id="chatbot" class="chatbot-wrapper">
+  <div class="chatbot-header">
+    <div class="left">
+      <img src="images/bot-icon.png" alt="Bot Icon" class="bot-icon">
+      <div>
+        <div class="bot-title">ChatBot</div>
+        <div class="bot-status">🟢 online</div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="toggleChat(false)">✖</button>
+  </div>
+
+  <div id="chat-content" class="chatbot-body">
+    <div class="bot-message">
+      <img src="images/bot-icon.png" class="avatar">
+      <div class="message">Halo sobat indista, ada yang bisa dibantu??</div>
+    </div>
+  </div>
+
+  <div class="chatbot-footer">
+    <input type="text" id="chat-input" placeholder="Ask your question..." onkeypress="handleKey(event)">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+   // Carousel Automation
+const track = document.querySelector('.carrousel-track');
+let index = 0;
+const total = track.children.length;
+const carWidth = 100 / total;
+
+function moveCarousel() {
+  index = (index + 1) % total;
+  track.style.transform = `translateX(-${index * carWidth}%)`;
+}
+
+setInterval(moveCarousel, 3000);
+
+// Additional animation effects
+const blurCircles = document.querySelectorAll('.blur-circle');
+blurCircles.forEach(circle => {
+  circle.style.animation = `float ${6 + Math.random() * 3}s ease-in-out infinite, pulse ${4 + Math.random() * 2}s ease-in-out infinite`;
+});
+
+  </script>
+
+<body>
+  
 </body>
 <!-- Semua section selesai -->
 
@@ -250,7 +353,82 @@
   <!-- isi login popup -->
 </div>
 
-<!-- SCRIPT -->
-<script src="script.js"></script>
+ <script>
+  function toggleChat(show) {
+  const chatbox = document.getElementById("chatbot");
+  chatbox.style.display = show ? "flex" : "none"; // Menampilkan atau menyembunyikan chatbot
+}
+
+function handleKey(e) {
+  if (e.key === "Enter") sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const chat = document.getElementById("chat-content");
+
+  // Tampilkan pesan user
+  const userDiv = document.createElement("div");
+  userDiv.className = "user-message";
+  userDiv.innerHTML = `<div class="message">${msg}</div>`;
+  chat.appendChild(userDiv);
+
+  // Jawaban bot
+  const reply = getBotReply(msg.toLowerCase());
+
+  const botDiv = document.createElement("div");
+  botDiv.className = "bot-message";
+  botDiv.innerHTML = `
+    <img src="images/bot-icon.png" class="avatar">
+    <div class="message">${reply}</div>
+  `;
+
+  setTimeout(() => {
+    chat.appendChild(botDiv);
+    chat.scrollTop = chat.scrollHeight;
+  }, 600);
+
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function getBotReply(msg) {
+  if (msg.includes("Apa kabar?")) return "mimin baik baik saja, bagaimana kabar mu!";
+  if (msg.includes("dimana lokasinya?")) return "Lokasi kami di depok tepatnya di Alexandria Purple Cimanggis Depok West Java";
+  if (msg.includes("harga") || msg.includes("ongkir")) return "Harga tergantung lokasi dan durasi ya!";
+  if (msg.includes("sewa")) return "Kami menyediakan sewa mobil harian, mingguan, hingga bulanan.";
+  if (msg.includes("indista")) return "Indista adalah penyedia solusi digital dan rental mobil terpercaya.";
+  if (msg.includes("langganan")) return "Langganan entertainment tersedia dengan banyak pilihan paket.";
+  if (msg.includes("mobil")) return "Kami memiliki berbagai tipe mobil mulai dari city car, MPV, hingga pick-up.";
+  if (msg.includes("lokasi")) return "Lokasi kami di Alexandria Purple Cimanggis Depok, atau cek Google Maps.";
+  if (msg.includes("bantuan")) return "Tim kami siap membantu kamu via WhatsApp atau telepon.";
+  if (msg.includes("sewa mobil")) return "Kami menyediakan sewa mobil lepas kunci maupun dengan supir.";
+  if (msg.includes("buka jam berapa") || msg.includes("jam operasional")) return "Kami buka setiap hari dari jam 08.00 sampai 20.00 WIB.";
+  if (msg.includes("antar jemput")) return "Kami menyediakan layanan antar jemput sesuai zona. Bisa pilih saat pemesanan.";
+  if (msg.includes("jenis mobil")) return "Kami punya mobil city car, MPV, SUV, pick-up, dan motor juga tersedia.";
+  if (msg.includes("supir")) return "Kamu bisa pilih sewa dengan atau tanpa supir.";
+  if (msg.includes("lepas kunci")) return "Ya, tersedia layanan lepas kunci. Syaratnya cukup SIM A dan KTP aktif.";
+  if (msg.includes("lokasi") || msg.includes("alamat")) return "Lokasi kami di Alexandria Purple, Cimanggis - Depok.";
+  if (msg.includes("bayar")) return "Pembayaran bisa melalui transfer bank, QRIS, dan pembayaran tunai di kantor.";
+  if (msg.includes("dp") || msg.includes("uang muka")) return "Kami menerima DP minimal 30% untuk pemesanan kendaraan.";
+  if (msg.includes("kontak") || msg.includes("hubungi")) return "Hubungi kami via WhatsApp di 0812-3456-7890 atau email marketing.indista@gmail.com.";
+  if (msg.includes("durasi")) return "Penyewaan bisa mulai dari 6 jam, 12 jam, harian, mingguan, hingga bulanan.";
+  if (msg.includes("ganti tanggal")) return "Kamu bisa mengubah tanggal sewa maksimal H-1 sebelum jadwal.";
+  if (msg.includes("ketersediaan")) return "Cek ketersediaan kendaraan langsung dari form pencarian di halaman awal.";
+  if (msg.includes("kendaraan rusak") || msg.includes("kerusakan")) return "Kami akan bantu ganti kendaraan jika ada kerusakan teknis selama sewa.";
+  if (msg.includes("zona")) return "Ada 3 zona layanan: Zona 1 (70rb), Zona 2 (80rb), Zona 3 (90rb) per hari.";
+  if (msg.includes("asuransi")) return "Harga belum termasuk asuransi. Kamu bisa menambahkan perlindungan tambahan.";
+  if (msg.includes("promo") || msg.includes("diskon")) return "Cek halaman depan untuk promo terbaru atau follow IG kami @indista.rental.";
+
+  return "Maaf, saya belum mengerti. Bisa ulangi dengan kata lain? atau silakan hubungi layanan pelanggan kami melalui WhatsApp +6285156434794  untuk bantuan lebih lanjut.";
+}
+ </script>
+
+
+</body>
+</html>
 </body>
 </html>

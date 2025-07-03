@@ -50,15 +50,35 @@
           <label for="driver">Sebagai Driver</label>
         </div>
         <div class="upload-section">
-          <div class="upload-group">
-            <label>Unggah KTP</label>
-            <button class="upload-btn">Upload</button>
-          </div>
-          <div class="upload-group">
-            <label>Unggah SIM</label>
-            <button class="upload-btn">Upload</button>
-          </div>
-        </div>
+  <div class="upload-group">
+    <label>Unggah KTP</label>
+    <input type="file" id="ktp-upload" class="file-input" style="display:none;">
+    <button class="upload-btn" id="ktp-btn" onclick="document.getElementById('ktp-upload').click()">Upload</button>
+  </div>
+  <div class="upload-group">
+    <label>Unggah SIM</label>
+    <input type="file" id="sim-upload" class="file-input" style="display:none;">
+    <button class="upload-btn" id="sim-btn" onclick="document.getElementById('sim-upload').click()">Upload</button>
+  </div>
+</div>
+
+        <script> // Fungsi untuk menangani perubahan status tombol upload
+function handleFileUpload(inputId, buttonId) {
+  const input = document.getElementById(inputId);
+  const button = document.getElementById(buttonId);
+
+  input.addEventListener('change', function() {
+    if (input.files.length > 0) {
+      // Mengubah tombol menjadi hijau dan menampilkan "Berhasil"
+      button.classList.add('success');
+    }
+  });
+}
+
+// Menambahkan event listener untuk tombol upload KTP dan SIM
+handleFileUpload('ktp-upload', 'ktp-btn');
+handleFileUpload('sim-upload', 'sim-btn');
+</script>
       </div>
 
       <div class="card">
@@ -84,7 +104,7 @@
             <option>Rekan Kerja</option>
           </select>
         </div>
-        <button class="send-btn">Kirim</button>
+        
       </div>
 
       <div class="card">
@@ -100,6 +120,12 @@
         </div>
         <button class="continue-btn">Lanjut Pembayaran</button>
       </div>
+
+      <script>
+        document.querySelector('.continue-btn').addEventListener('click', () => {
+  window.location.href = 'paymentbank.html';
+});
+      </script>
     </div>
 
     <!-- Kolom Kanan -->
@@ -115,7 +141,7 @@
             <h3>TERIOS</h3>
             <p>Tanpa Driver</p>
           </div>
-          <img src="https://via.placeholder.com/100x60?text=Mobil" class="car-image" alt="Mobil">
+          <img src="images/dfsk.png" class="car-image" alt="Mobil">
         </div>
 
         <div class="datetime-section">
@@ -143,6 +169,40 @@
     </div>
   </div>
 </div>
+
+
+  <!-- CHATBOT TRIGGER -->
+ <img src="images/bot-icon.png" alt="Bot Icon" class="bot-icon">
+
+
+
+<!-- CHATBOT PANEL -->
+<div id="chatbot" class="chatbot-wrapper">
+  <div class="chatbot-header">
+    <div class="left">
+      <img src="images/bot-icon.png" alt="Bot Icon" class="bot-icon">
+      <div>
+        <div class="bot-title">ChatBot</div>
+        <div class="bot-status">🟢 online</div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="toggleChat(false)">✖</button>
+  </div>
+
+  <div id="chat-content" class="chatbot-body">
+    <div class="bot-message">
+      <img src="images/bot-icon.png" class="avatar">
+      <div class="message">Halo sobat indista, ada yang bisa dibantu??</div>
+    </div>
+  </div>
+
+  <div class="chatbot-footer">
+    <input type="text" id="chat-input" placeholder="Ask your question..." onkeypress="handleKey(event)">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+
 
 </body>
 </html>

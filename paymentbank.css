@@ -1,0 +1,323 @@
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+.step.completed .step-circle,
+.step.active .step-circle {
+  border-color: #ff4444;
+  background-color: #ff4444;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.step.completed .step-label,
+.step.active .step-label {
+  color: #ff4444;
+  font-weight: 500;
+}
+
+.step-line {
+  width: 100px;
+  height: 2px;
+  background-color: #ddd;
+  margin: 0 20px;
+  margin-top: -18px;
+}
+
+.step-line.completed {
+  background-color: #ff4444;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.payment-section,
+.booking-details {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.method-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
+.bank-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.bank-option {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bank-option.selected {
+  border-color: #ff4444;
+  background-color: #fff5f5;
+}
+
+.bank-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+}
+
+.bca-logo {
+  background-color: #0066cc;
+}
+
+.bca-logo::after {
+  content: 'BCA';
+}
+
+.bri-logo {
+  background-color: #003d7a;
+}
+
+.bri-logo::after {
+  content: 'BRI';
+}
+
+.bni-logo {
+  background-color: #ff6600;
+}
+
+.bni-logo::after {
+  content: 'BNI';
+}
+
+.mandiri-logo {
+  background-color: #003d7a;
+}
+
+.mandiri-logo::after {
+  content: 'MDR';
+}
+
+.bank-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.breakdown-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.price-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.price-value {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.total-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.total-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.pay-button {
+  width: 100%;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #e63939;
+}
+
+.booking-header {
+  margin-bottom: 30px;
+}
+
+.booking-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.booking-id {
+  color: #999;
+  font-size: 14px;
+}
+
+.car-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.car-model {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.car-type {
+  color: #999;
+  font-size: 14px;
+}
+
+.car-image {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.datetime-section,
+.location-section {
+  margin-bottom: 30px;
+}
+
+.datetime-title,
+.location-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.datetime-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-item,
+.time-item,
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-icon,
+.clock-icon,
+.location-icon {
+  flex-shrink: 0;
+}
+
+.date-text,
+.time-text,
+.location-text {
+  color: #666;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .progress-steps {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .step-line {
+    width: 2px;
+    height: 30px;
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Mobil</title>
+  <link rel="stylesheet" href="detailmobil.css" />
+</head>
+
+<body>
+  <!-- === NAVBAR === -->
+  <header class="header">
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Logo Indista" class="logo">
+    </div>
+    <nav class="nav">
+      <div class="nav-item dropdown">
+        <span>PRODUK KAMI</span>
+        <svg class="dropdown-icon" width="12" height="8"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="dropdown-menu">
+          <div class="dropdown-item"><img src="images/checkmark.png" alt="">SEWA KENDARAAN</div>
+          <div class="dropdown-item"><img src="images/business.png" alt="">INDISTA UNTUK BISNIS</div>
+        </div>
+      </div>
+      <span class="nav-item">PUSAT BANTUAN</span>
+      <span class="nav-item">HUBUNGI KAMI</span>
+    </nav>
+    <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
+  </header>
+
+
+  <div class="container">
+    <img src="images/suzuki-carry.png" alt="Mobil" class="main-image" id="mainImage" />
+    <div class="thumbnail">
+      <img src="images/suzuki-carry.png" onclick="gantiGambar(this)" />
+      <img src="images/carrypickup2.png" onclick="gantiGambar(this)" />
+    </div>
+
+    <div class="car-title">SUZUKI CARRY PICK UP</div>
+    <div class="car-price">Rp. 200.000</div>
+
+    <div class="car-specs">
+      <div><img src="images/icon-year.png" height="24"/><div>2019</div></div>
+      <div><img src="images/icon-fuel.png" height="24"/><div>Pertamax</div></div>
+      <div><img src="images/icon-color.png" height="24"/><div>Hitam</div></div>
+      <div><img src="images/icon-transmission.png" height="24"/><div>Manual</div></div>
+    </div>
+
+    <div class="frame-box">
+      <div>
+        <h3>Termasuk</h3>
+        <ul>
+          <li>Sewa mobil full day</li>
+          <li>Penjemputan & pengantaran sesuai zona layanan</li>
+          <li>Biaya pajak (PPN)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Tidak Termasuk</h3>
+        <ul>
+          <li>Bahan bakar</li>
+          <li>Biaya tol & parkir</li>
+          <li>Asuransi pribadi</li>
+          <li>Biaya overtime</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="syarat-sewa">
+      <h4>Syarat Sewa:</h4>
+      <ul>
+        <li>Usia minimal penyewa/pengemudi adalah 21 tahun</li>
+        <li>Memiliki SIM A aktif</li>
+        <li>Menunjukkan kartu identitas</li>
+        <li>Bersedia mematuhi ketentuan penyedia layanan</li>
+        <li>Menyediakan dokumen pendukung</li>
+        <li>Pembatalan H-1 dikenakan potongan 50%</li>
+        <li>Keterlambatan lebih dari 1 jam dikenakan biaya tambahan</li>
+        <li>Mobil tidak untuk komersial tanpa izin</li>
+        <li>Penyewa bertanggung jawab atas kerusakan</li>
+      </ul>
+    </div>
+
+        <div class="form-section">
+            <h3>Lokasi Penjemputan</h3>
+            <label class="radio-label">
+                <input type="radio" name="lokasi" checked>Kantor Rental
+            </label>
+            <label class="radio-label">
+              <img src="images/location-icon.png" class="icon-img">Alexandria Purple Cimanggis Depok West Java
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="lokasi" id="lainnya">Lokasi Lain
+            </label>
+            <input type="text" class="input-lokasi" id="inputLokasi" placeholder="Masukkan lokasi penjemputan">
+        </div>
+
+        <div class="form-section">
+            <h3>Lokasi Pengambilan</h3>
+            <label class="radio-label">
+                <input type="radio" name="ambil" checked>Kantor Rental
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="ambil" id="ambilLain">Lokasi Lain
+            </label>
+            <input type="text" class="input-lokasi" id="inputAmbil" placeholder="Masukkan lokasi pengambilan">
+        </div>
+
+        <div class="form-section">
+            <h3>Lokasi Rental</h3>
+            <p>
+                <img src="images/location-icon.png" class="icon-img" alt="Location Icon"/> 
+                Jl. TMII, Ceger, Jakarta Timur
+            </p>
+
+            <!-- Google Maps Embed -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7080495610294!2d106.88731747406217!3d-6.302038593687107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed50d076a261%3A0x73127b9ecf2da0c!2sTaman%20Mini%20Indonesia%20Indah!5e0!3m2!1sid!2sid!4v1751002905626!5m2!1sid!2sid" 
+                width="100%" 
+                height="300" 
+                style="border:0; border-radius:8px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="total-harga">
+            <span>Total Harga</span>
+            <span id="totalHarga">Rp. 450.000</span> <!-- Total Harga -->
+        </div>
+
+        <div class="keterangan">
+            <span id="keteranganHarga">Harga akan bertambah jika memilih Lokasi Lain.</span> <!-- Keterangan Tambahan -->
+        </div>
+
+        <button class="button-red">Lanjut</button>
+    </div>
+
+    <script>
+      // Mendeklarasikan semua elemen yang diperlukan hanya sekali
+const lokasiRadio = document.querySelectorAll('input[name="lokasi"]');
+const ambilRadio = document.querySelectorAll('input[name="ambil"]');
+const inputLokasi = document.getElementById('inputLokasi');
+const inputAmbil = document.getElementById('inputAmbil');
+const totalHargaElem = document.getElementById('totalHarga');
+const keteranganHargaElem = document.getElementById('keteranganHarga');
+
+let basePrice = 450000; // Harga dasar mobil
+let totalHarga = basePrice;
+
+// Fungsi untuk memperbarui total harga
+function updateTotalHarga() {
+    let additionalCost = 0;
+
+    // Menambahkan biaya lokasi penjemputan jika "Lokasi Lain" dipilih
+    if (document.getElementById('lainnya').checked) {
+      additionalCost += 100000; // Menambahkan Rp. 100.000 untuk lokasi lain penjemputan
+    }
+
+    // Menambahkan biaya lokasi pengambilan jika "Lokasi Lain" dipilih
+    if (document.getElementById('ambilLain').checked) {
+      additionalCost += 100000; // Menambahkan Rp. 100.000 untuk lokasi lain pengambilan
+    }
+
+    // Menghitung total harga
+    totalHarga = basePrice + additionalCost;
+    totalHargaElem.textContent = `Rp. ${totalHarga.toLocaleString()}`; // Menampilkan total harga
+
+    // Menampilkan keterangan jika ada tambahan biaya
+    if (additionalCost > 0) {
+      keteranganHargaElem.textContent = `Harga akan bertambah jika memilih Lokasi Lain. Total tambahan: Rp. ${additionalCost.toLocaleString()}`;
+    } else {
+      keteranganHargaElem.textContent = `Harga akan bertambah jika memilih Lokasi Lain.`;
+    }
+}
+
+// Menambahkan event listener untuk memilih lokasi penjemputan
+lokasiRadio.forEach(radio => {
+    radio.addEventListener('change', () => {
+        // Menampilkan atau menyembunyikan input lokasi penjemputan
+        inputLokasi.style.display = document.getElementById('lainnya').checked ? 'block' : 'none';
+        updateTotalHarga(); // Memperbarui harga total saat pilihan berubah
+    });
+});
+
+// Menambahkan event listener untuk memilih lokasi pengambilan
+ambilRadio.forEach(r => {
+    r.addEventListener('change', () => {
+        // Menampilkan atau menyembunyikan input lokasi pengambilan
+        inputAmbil.style.display = document.getElementById('ambilLain').checked ? 'block' : 'none';
+        updateTotalHarga(); // Memperbarui harga total saat pilihan berubah
+    });
+});
+
+// Inisialisasi harga total saat halaman pertama kali dimuat
+updateTotalHarga();
+
+
+    </script> 
+    
+    <script>
+      function gantiGambar(elemen) {
+    // Mengambil src dari gambar thumbnail yang diklik
+    const gambarBaru = elemen.src;
+    
+    // Mengubah src gambar utama sesuai dengan gambar thumbnail yang diklik
+    document.getElementById('mainImage').src = gambarBaru;
+}
+    </script>
+
+      <script>
+      document.getElementById('btnLanjut').addEventListener('click', function() {
+    // Mengarahkan pengguna ke halaman booking.html
+    window.location.href = "booking.html";
+});
+    </script>
+    
+</body>
+</html>
+
+
+
+

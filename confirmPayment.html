@@ -45,13 +45,14 @@
             <path d="M8 4v4l3 3" stroke="white" stroke-width="2" fill="none" />
           </svg>
           <span>Selesaikan Pembayaran dalam 00:24:17</span>
+          
         </div>
 
         <div class="transfer-section">
           <h3>Transfer ke</h3>
           <div class="bank-info">
             <div class="bank-logo">
-              <img src="https://csspicker.dev/api/image/?q=mandiri+bank+logo&image_type=vector" alt="Mandiri">
+              <img src="images/mandiri.png" alt="mandiri">
             </div>
             <span>Virtual Account</span>
           </div>
@@ -104,7 +105,7 @@
               <h4>TERIOS</h4>
               <span class="driver-info">Tanpa Driver</span>
             </div>
-            <img src="https://csspicker.dev/api/image/?q=red+suv+car+terios&image_type=photo" alt="Red Terios" class="car-image">
+            <img src="images/dfsk.png" alt="Red Terios" class="car-image">
           </div>
 
           <div class="datetime-section">
@@ -170,4 +171,45 @@
   </div>
 </body>
 
+<script>
+  // Mengambil elemen countdown-alert untuk menampilkan waktu mundur
+const countdownElement = document.querySelector('.countdown-alert span');
+
+// Waktu yang diberikan: 30 menit dalam detik
+let countdownTime = 30 * 60;
+
+// Fungsi untuk memperbarui tampilan countdown setiap detik
+const updateCountdown = () => {
+  // Menghitung menit dan detik
+  const minutes = Math.floor(countdownTime / 60);
+  const seconds = countdownTime % 60;
+
+  // Format waktu menjadi MM:SS
+  const timeFormatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+  // Menampilkan waktu yang sudah diformat
+  countdownElement.textContent = `Selesaikan Pembayaran dalam ${timeFormatted}`;
+
+  // Mengurangi satu detik setiap interval
+  if (countdownTime > 0) {
+    countdownTime--;
+  } else {
+    // Ketika waktu habis, menampilkan pemberitahuan
+    countdownElement.textContent = 'Waktu Pembayaran Habis!';
+  }
+};
+
+// Update countdown setiap detik
+setInterval(updateCountdown, 1000);
+
+</script>
+<script>
+  const confirmButton = document.querySelector('.confirm-button');
+
+  if (confirmButton) {
+    confirmButton.addEventListener('click', function () {
+      window.location.href = 'paymentSuccess.html';
+    });
+  }
+</script>
 </html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar Mobil - Indala Rental</title>
+  <link rel="stylesheet" href="daftarcar.css">
+</head>
+<body>
+
+
+<header class="header">
+  <div class="logo-area">
+    <img src="images/logo.png" alt="Logo Indista" class="logo">
+  </div>
+
+  <nav class="nav">
+    <div class="nav-item dropdown">
+  <span>PRODUK KAMI</span>
+  <!-- Tetap pakai SVG untuk icon dropdown -->
+  <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="dropdown-menu">
+    <div class="dropdown-item">
+      <!-- Ganti SVG dengan Gambar -->
+      <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+      SEWA KENDARAAN
+    </div>
+    <div class="dropdown-item">
+      <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+      INDISTA UNTUK BISNIS
+    </div>
+  </div>
+</div>
+    <span class="nav-item">PUSAT BANTUAN</span>
+    <span class="nav-item">HUBUNGI KAMI</span>
+  </nav>
+
+  <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
+</header>
+
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>BEBASKAN PERJALANANMU</h1>
+    <h2>SEWA MOBIL MUDAH, CEPAT, & AMAN</h2>
+    <p>Temukan kenyamanan maksimal saat bepergian bersama layanan sewa mobil terpercaya dan berkualitas dari kami</p>
+  </div>
+
+  <div class="hero-image-wrapper">
+      <div class="bg-layer"></div>
+      <div class="blur-container">
+        <div class="blur-circle red"></div>
+        <div class="blur-circle green"></div>
+      </div>
+      </div>
+
+    <!-- Mobil 3D -->
+    <div class="carrousel-track">
+      <img src="images/mobil-3d.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-black.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-red.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-white.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-blue.png" class="hero-car" alt="Mobil 3D">
+    </div>
+  </div>
+</section>
+
+<!-- TAMBAHKAN ELEMEN TRANSISI INI -->
+<div class="section-transition"></div>
+
+<!-- WRAPPER UNTUK BACKGROUND PUTIH -->
+<div class="cars-wrapper">
+  <section class="cars-section">
+    <!-- CARD #1 -->
+    <div class="car-card">
+      <div class="car-image">
+        <img src="images/dfsk.png" alt="DFSK 580">
+      </div>
+      <div class="car-info">
+        <h3 class="car-title">DFSK 580 1.5 CVT TURBO - TERIOS</h3>
+        <p class="car-description">Nikmati kenyamanan dan performa tinggi dengan SUV elegan. Dilengkapi mesin turbo 1.5L CVT yang tangguh dan efisien.</p>
+      </div>
+      <div class="car-price-section">
+        <div class="car-price-label">Harga Mulai Dari</div>
+        <div class="car-price">Rp. 400.000 / HARI</div>
+        <button class="rent-button">Sewa Mobil</button>
+      </div>
+    </div>
+
+    <!-- CARD #2 -->
+    <div class="car-card">
+      <div class="car-image">
+        <img src="images/confero.png" alt="Wuling Confero">
+      </div>
+      <div class="car-info">
+        <h3 class="car-title">WULING CONFERO S</h3>
+        <p class="car-description">MPV keluarga yang luas, nyaman, dan hemat BBM. Dilengkapi sistem keselamatan modern serta desain interior elegan.</p>
+      </div>
+      <div class="car-price-section">
+        <div class="car-price-label">Harga Mulai Dari</div>
+        <div class="car-price">Rp. 350.000 / HARI</div>
+        <button class="rent-button">Sewa Mobil</button>
+      </div>
+    </div>
+
+    <!-- CARD #3 -->
+    <div class="car-card">
+      <div class="car-image">
+        <img src="images/cortez.png" alt="Wuling Cortez">
+      </div>
+      <div class="car-info">
+        <h3 class="car-title">WULING CORTEZ 1.5 CVT TURBO - INNOVA</h3>
+        <p class="car-description">Pilihan cerdas dengan mesin turbo bertenaga dan ruang kabin luas menjamin kenyamanan sepanjang perjalanan.</p>
+      </div>
+      <div class="car-price-section">
+        <div class="car-price-label">Harga Mulai Dari</div>
+        <div class="car-price">Rp. 450.000 / HARI</div>
+        <button class="rent-button">Sewa Mobil</button>
+      </div>
+    </div>
+
+    <!-- CARD #4 -->
+    <div class="car-card">
+      <div class="car-image">
+        <img src="images/suzuki-carry.png">
+      </div>
+      <div class="car-info">
+        <h3 class="car-title">SUZUKI CARRY PICK UP</h3>
+        <p class="car-description">Solusi tepat untuk kebutuhan logistik dan bisnis Anda. Daya angkut besar dan mesin handal untuk usaha.</p>
+      </div>
+      <div class="car-price-section">
+        <div class="car-price-label">Harga Mulai Dari</div>
+        <div class="car-price">Rp. 300.000 / HARI</div>
+        <button class="rent-button">Sewa Mobil</button>
+      </div>
+    </div>
+
+    <!-- CARD #5 -->
+    <div class="car-card">
+      <div class="car-image">
+        <img src="images/viar-vintech.png" alt="Viar Vintech">
+      </div>
+      <div class="car-info">
+        <h3 class="car-title">VIAR VINTECH 200</h3>
+        <p class="car-description">Motor modern 200cc, irit bahan bakar, nyaman untuk harian. Dilengkapi fitur keselamatan untuk mobilitas kota.</p>
+      </div>
+      <div class="car-price-section">
+        <div class="car-price-label">Harga Mulai Dari</div>
+        <div class="car-price">Rp. 150.000 / HARI</div>
+        <button class="rent-button">Sewa Mobil</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <h2>DON'T HESITATE TO CONTACT US</h2>
+    <p>BAGAIMANA MENEMUKAN SOLUSI YANG TEPAT UNTUK BISNIS ANDA?<br>
+    KONSULTASI DAN RANCANG BERSAMA TIM PROFESSIONAL KAMI.</p>
+  </div>
+
+  <div class="footer-content">
+    <!-- KIRI -->
+    <div class="footer-left">
+      <h3>INFORMATION</h3>
+      <p>
+        PT Inovasi Digital Semesta adalah penyedia solusi digital terintegrasi yang berfokus pada inovasi teknologi,<br>
+        layanan komunikasi, dan hiburan interaktif untuk mendukung pertumbuhan bisnis Anda.
+      </p>
+
+      <div class="social-icons">
+        <img src="images/facebook.png" alt="Facebook">
+        <img src="images/twitter.png" alt="Twitter">
+        <img src="images/instagram.png" alt="Instagram">
+        <img src="images/linkedln.png" alt="LinkedIn">
+      </div>
+
+      <h3>CONTACT US</h3>
+      <p><img src="images/location.svg" alt=""> Alexandria Purple Cimanggis Depok</p>
+      <p><img src="images/email.svg" alt=""> marketing.indista@gmail.com</p>
+
+      <input type="email" placeholder="Email Address">
+      <button>SUBSCRIBE</button>
+    </div>
+
+    <!-- KANAN -->
+    <div class="footer-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0358434992466!2d106.85198187484795!3d-6.2571381612305325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f22dcf56d5b1%3A0xfad2764f11146a5e!2sPT.%20Inovasi%20Digital%20Semesta%20(Indista)!5e0!3m2!1sen!2sid!4v1718596355090!5m2!1sen!2sid"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+  
+<script>
+   // Carousel Automation
+const track = document.querySelector('.carrousel-track');
+let index = 0;
+const total = track.children.length;
+const carWidth = 100 / total;
+
+function moveCarousel() {
+  index = (index + 1) % total;
+  track.style.transform = `translateX(-${index * carWidth}%)`;
+}
+
+setInterval(moveCarousel, 3000);
+
+// Additional animation effects
+const blurCircles = document.querySelectorAll('.blur-circle');
+blurCircles.forEach(circle => {
+  circle.style.animation = `float ${6 + Math.random() * 3}s ease-in-out infinite, pulse ${4 + Math.random() * 2}s ease-in-out infinite`;
+});
+</script>
+
+</body>
+</html>

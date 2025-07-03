@@ -39,7 +39,7 @@
 
   <!-- Car Info -->
   <div class="car-section">
-    <img src="https://csspicker.dev/api/image/?q=red+suv+car&image_type=photo" alt="TERIOS" class="car-image" />
+    <img src="images/dfsk.png" alt="TERIOS" class="car-image" />
     <div class="car-info">
       <h3 class="car-name">TERIOS</h3>
       <p class="car-type">Tanpa Driver</p>
@@ -130,6 +130,15 @@
   <!-- Finish Button -->
   <button class="finish-button">SELESAI</button>
 </div>
+<script>
+  const finishButton = document.querySelector('.finish-button');
+
+  if (finishButton) {
+    finishButton.addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+  }
+</script>
 
 </body>
 </html>

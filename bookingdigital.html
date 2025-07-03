@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking WeTV Premium</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 24px;
+    }
+    .step {
+      text-align: center;
+      color: #ccc;
+    }
+    .step.active {
+      color: #ff0000;
+    }
+    .step-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ccc;
+      margin: auto;
+    }
+    .step.active .step-circle {
+      background: #ff0000;
+    }
+    .step-line {
+      width: 80px;
+      height: 2px;
+      background: #ccc;
+    }
+    .step.active + .step-line {
+      background: #ff0000;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 40px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      color: #ff0000;
+      margin-bottom: 16px;
+    }
+    .benefits {
+      list-style: none;
+      padding-left: 0;
+    }
+    .benefits li {
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .benefits li::before {
+      content: "\2022";
+      position: absolute;
+      left: 0;
+      color: #ff0000;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    input[type="number"],
+    input[type="email"] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #f9f9f9;
+    }
+    .payment-option img {
+      height: 20px;
+      margin-right: 10px;
+    }
+    .payment-option input[type="radio"] {
+      display: none;
+    }
+    .payment-option.selected {
+      border-color: #ff0000;
+      background: #fff0f0;
+    }
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      background-color: #ff0000;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    .submit-button:hover {
+      background-color: #cc0000;
+    }
+    .note {
+      background: #fef7f7;
+      border-left: 4px solid #ff0000;
+      padding: 12px;
+      font-size: 14px;
+      color: #444;
+      border-radius: 6px;
+      margin-top: -8px;
+      margin-bottom: 16px;
+    }
+    .harga {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="steps">
+    <div class="step active">
+      <div class="step-circle"></div>
+      <div>Booking</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"></div>
+      <div>Pembayaran</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"></div>
+      <div>Selesai</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/WeTV_logo.png" alt="WeTV Logo" style="width:100px; margin-bottom: 16px;">
+      <h3>WETV PREMIUM</h3>
+      <ul class="benefits">
+        <li>Konten eksklusif untuk VIP</li>
+        <li>VIP tonton lebih awal</li>
+        <li>Unduh 30% lebih cepat</li>
+        <li>Menonton tanpa iklan</li>
+        <li>Kesempatan mendapat diskon hingga 50%</li>
+      </ul>
+      <div class="harga">Harga mulai Rp 49.000</div>
+    </div>
+
+    <div class="card">
+      <h3>Formulir Pemesanan</h3>
+      <form action="confirmPayment.html">
+        <div class="form-group">
+          <label for="durasi">Pilih Nominal</label>
+          <select id="durasi" name="durasi">
+            <option value="1bulan">1 Bulan - Rp 49.000</option>
+            <option value="3bulan">3 Bulan - Rp 139.000</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="paket">Tipe VIP</label>
+          <select id="paket" name="paket">
+            <option value="private">Private (1 user - lebih stabil dan aman)</option>
+            <option value="sharing">Sharing (1 akun digunakan bersama - lebih hemat)</option>
+          </select>
+          <div class="note">
+            <strong>Private:</strong> Hanya untuk Anda sendiri.<br>
+            <strong>Sharing:</strong> Dapat dibagi dengan 2-4 pengguna. Cocok untuk hemat, tapi bisa logout otomatis jika login bersamaan.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="jumlah">Jumlah Pembelian</label>
+          <input type="number" id="jumlah" name="jumlah" placeholder="Contoh: 1" required>
+        </div>
+        <div class="form-group">
+          <label>Pilih Metode Pembayaran</label>
+          <div class="payment-grid" id="paymentOptions">
+            <label class="payment-option"><input type="radio" name="metode" value="Dana"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_DANA.svg" alt="Dana">DANA</label>
+            <label class="payment-option"><input type="radio" name="metode" value="QRIS"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/QRIS_logo.svg" alt="QRIS">QRIS</label>
+            <label class="payment-option"><input type="radio" name="metode" value="Gopay"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Gopay_logo.svg" alt="Gopay">Gopay</label>
+            <label class="payment-option"><input type="radio" name="metode" value="ShopeePay"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/ShopeePay_logo.svg" alt="ShopeePay">ShopeePay</label>
+            <label class="payment-option"><input type="radio" name="metode" value="BCA"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/BCA_logo.svg" alt="BCA">BCA</label>
+            <label class="payment-option"><input type="radio" name="metode" value="BRI"><img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Bank_BRI_logo.svg" alt="BRI">BRI</label>
+            <label class="payment-option"><input type="radio" name="metode" value="BNI"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Bank_BNI_logo.svg" alt="BNI">BNI</label>
+            <label class="payment-option"><input type="radio" name="metode" value="Mandiri"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Logo_Bank_Mandiri.svg" alt="Mandiri">Mandiri</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Masukkan Info Kontak</label>
+          <input type="email" id="email" name="email" placeholder="contoh@gmail.com" required>
+        </div>
+        <button type="submit" class="submit-button">Beli Sekarang</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    const options = document.querySelectorAll('.payment-option');
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        options.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+      });
+    });
+  </script>
+</body>
+</html>
