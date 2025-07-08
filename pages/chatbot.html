@@ -1,0 +1,30 @@
+<!-- CHATBOT PANEL -->
+
+<div id="chatbot-panel">
+    <img src="/images/bot-icon.png" class="chatbot-trigger" onclick="toggleChat(true)" alt="Chatbot">
+    <button class="chatbot-toggle" onclick="toggleChat(true)">Chat with us!</button>
+    <div id="chatbot" class="chatbot-wrapper">
+    <div class="chatbot-header">
+        <div class="left">
+        <img src="/images/bot-icon.png" alt="Bot Icon" class="bot-icon">
+        <div>
+            <div class="bot-title">ChatBot</div>
+            <div class="bot-status">🟢 online</div>
+        </div>
+        </div>
+        <button class="close-btn" onclick="toggleChat(false)">✖</button>
+    </div>
+
+    <div id="chat-content" class="chatbot-body">
+        <div class="bot-message">
+        <img src="/images/bot-icon.png" class="avatar">
+        <div class="message">Halo sobat indista, ada yang bisa dibantu??</div>
+        </div>
+    </div>
+
+    <div class="chatbot-footer">
+        <input type="text" id="chat-input" placeholder="Ask your question..." onkeypress="handleKey(event)">
+        <button onclick="sendMessage()">➤</button>
+    </div>
+    </div>
+</div>

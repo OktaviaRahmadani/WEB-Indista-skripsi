@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Pembelian & Booking</title>
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --background: #fff;
+      --text: #000;
+      --accent: #f8f8f8;
+    }
+  body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--accent);
+      margin: 0;
+      padding: 0;
+      color: var(--text);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #000;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-area img {
+      width: 175px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item:hover {
+      color: #ff0000;
+    }
+
+    .dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dropdown-icon {
+      color: white;
+    }
+
+    .dropdown-item img {
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      min-width: 250px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin-top: 10px;
+      display: none;
+      color: #333;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: #333;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      color: #ff0000;
+    }
+
+    .login-button {
+      background: red;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 13px;
+      box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
+    }
+
+    .login-button:hover {
+      background: darkred;
+    }
+
+    .main-content {
+      padding: 2rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--background);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+      animation: fadeInUp 0.8s ease;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #fddede;
+      color: var(--primary);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .filters input,
+    .filters select,
+    .filters button {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .filters button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .row:hover {
+      background-color: #fbe9e7;
+      cursor: pointer;
+    }
+
+    dialog {
+      border: none;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 400px;
+      animation: fadeInUp 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-area">
+      <img src="/images/logo.png" alt="Logo Indista" class="logo">
+    </div>
+    <nav class="nav">
+      <div class="nav-item dropdown">
+        <span>PRODUK KAMI</span>
+        <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="dropdown-menu">
+          <div class="dropdown-item">
+            <img src="/images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+            SEWA KENDARAAN
+          </div>
+          <div class="dropdown-item">
+            <img src="/images/business.png" alt="Bisnis Icon" width="16" height="16" />
+            INDISTA UNTUK BISNIS
+          </div>
+        </div>
+      </div>
+      <span class="nav-item">PUSAT BANTUAN</span>
+      <span class="nav-item">HUBUNGI KAMI</span>
+    </nav>
+    <button onclick="window.location.href='/pages/login.html'" class="login-button">LOGIN</button>
+  </header>
+
+  <div class="main-content">
+    <h1 style="text-align: center; color: var(--primary);">Riwayat Pembelian & Booking</h1>
+    <div class="filters">
+      <input type="text" id="search" placeholder="🔍 Cari...">
+      <input type="date" id="fromDate">
+      <input type="date" id="toDate">
+      <select id="filterJenis">
+        <option value="all">Semua</option>
+        <option value="booking">Booking</option>
+        <option value="digital">Digital</option>
+      </select>
+      <button onclick="exportData()">📄 Export</button>
+    </div>
+
+    <div class="container">
+      <div class="card" data-type="booking">
+        <h2>🚗 Riwayat Booking Kendaraan</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Kendaraan</th>
+              <th>Mulai</th>
+              <th>Selesai</th>
+              <th>Jumlah Hari</th>
+              <th>Total</th>
+              <th>Metode Pembayaran</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row" onclick="showDetail('Terios | 12 Januari - 13 Januari 2025 | Rp550.000 | Mandiri | Selesai')">
+              <td>Terios</td><td>12 Januari</td><td>13 Januari</td><td>2</td><td>Rp550.000</td><td>Mandiri</td><td>Selesai</td>
+            </tr>
+            <tr class="row" onclick="showDetail('Avanza | 5 Juni - 7 Juni 2025 | Rp725.000 | BCA | Selesai')">
+              <td>Avanza</td><td>5 Juni</td><td>7 Juni</td><td>3</td><td>Rp725.000</td><td>BCA</td><td>Selesai</td>
+            </tr>
+            <tr class="row" onclick="showDetail('Xpander | 20 Juni - 22 Juni 2025 | Rp610.000 | QRIS | Batal')">
+              <td>Xpander</td><td>20 Juni</td><td>22 Juni</td><td>3</td><td>Rp610.000</td><td>QRIS</td><td>Batal</td>
+            </tr>
+            <tr class="row" onclick="showDetail('Brio | 1 Juli - 4 Juli 2025 | Rp880.000 | BNI | Selesai')">
+              <td>Brio</td><td>1 Juli</td><td>4 Juli</td><td>4</td><td>Rp880.000</td><td>BNI</td><td>Selesai</td>
+            </tr>
+            <tr class="row" onclick="showDetail('Fortuner | 28 Mei - 30 Mei 2025 | Rp1.500.000 | Mandiri | Menunggu')">
+              <td>Fortuner</td><td>28 Mei</td><td>30 Mei</td><td>3</td><td>Rp1.500.000</td><td>Mandiri</td><td>Menunggu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container"> 
+    <div class="card" data-type="digital">
+      <h2>📱 Riwayat Pembelian Digital</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Produk</th>
+            <th>Tipe</th>
+            <th>Durasi</th>
+            <th>Total</th>
+            <th>Metode</th>
+            <th>Status</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Langganan Premium</td>
+            <td>Privat</td>
+            <td>3 Bulan</td>
+            <td>Rp150.000</td>
+            <td>BCA</td>
+            <td>Selesai</td>
+            <td>1 Januari 2025</td>
+            <td><button class="login-button" onclick="showDetail('Email: user1@gmail.com\nProduk: Premium 3 Bulan Privat\nTanggal: 1 Januari 2025\nMetode: BCA\nStatus: Selesai')">Lihat</button></td>
+          </tr>
+          <tr>
+            <td>Langganan Premium</td>
+            <td>Sharing</td>
+            <td>1 Bulan</td>
+            <td>Rp45.000</td>
+            <td>QRIS</td>
+            <td>Selesai</td>
+            <td>15 Februari 2025</td>
+            <td><button class="login-button" onclick="showDetail('Email: user2@gmail.com\nProduk: Premium 1 Bulan Sharing\nTanggal: 15 Februari 2025\nMetode: QRIS\nStatus: Selesai')">Lihat</button></td>
+          </tr>
+          <tr>
+            <td>Langganan Premium</td>
+            <td>Privat</td>
+            <td>6 Bulan</td>
+            <td>Rp280.000</td>
+            <td>Mandiri</td>
+            <td>Batal</td>
+            <td>10 Maret 2025</td>
+            <td><button class="login-button" onclick="showDetail('Email: user3@gmail.com\nProduk: Premium 6 Bulan Privat\nTanggal: 10 Maret 2025\nMetode: Mandiri\nStatus: Batal')">Lihat</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <dialog id="detailDialog">
+    <p id="detailText"></p>
+    <button onclick="document.getElementById('detailDialog').close()" class="login-button">Tutup</button>
+  </dialog>
+
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const fromDate = document.getElementById('fromDate');
+    const toDate = document.getElementById('toDate');
+    const filterJenis = document.getElementById('filterJenis');
+
+    searchInput.addEventListener('input', filterData);
+    fromDate.addEventListener('change', filterData);
+    toDate.addEventListener('change', filterData);
+    filterJenis.addEventListener('change', filterData);
+
+    function filterData() {
+      const keyword = searchInput.value.toLowerCase();
+      const jenis = filterJenis.value;
+
+      document.querySelectorAll('.card').forEach(card => {
+        const cardType = card.getAttribute('data-type');
+        let show = jenis === 'all' || jenis === cardType;
+
+        if (show && keyword) {
+          show = card.innerText.toLowerCase().includes(keyword);
+        }
+
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+
+    function showDetail(detail) {
+      document.getElementById('detailText').innerText = detail;
+      document.getElementById('detailDialog').showModal();
+    }
+
+    function exportData() {
+      alert("🔧 Fitur export masih dalam pengembangan");
+    }
+
+    
+  </script>
+</body>
+</html>

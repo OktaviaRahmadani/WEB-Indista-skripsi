@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1440, initial-scale=1.0">
   <title>Indista - Sewa Mobil</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="chatbot/chatbot.css">
 
 
 </head>
 <body>
-  <!-- Tempatkan ini di body halaman lain yang ingin menampilkan chatbot -->
 <div id="chatbot-container"></div>
 
 <script>
@@ -29,28 +28,28 @@
   </div>
 
   <nav class="nav">
-    <div class="nav-item dropdown">
-  <span>PRODUK KAMI</span>
-  <!-- Tetap pakai SVG untuk icon dropdown -->
-  <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
-    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+  <div class="nav-item dropdown">
+    <span>PRODUK KAMI</span>
+    <!-- Tetap pakai SVG untuk icon dropdown -->
+    <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
 
-  <div class="dropdown-menu">
-    <div class="dropdown-item">
-      <!-- Ganti SVG dengan Gambar -->
-      <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
-      SEWA KENDARAAN
-    </div>
-    <div class="dropdown-item">
-      <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
-      INDISTA UNTUK BISNIS
+    <div class="dropdown-menu">
+      <a href="daftarcar.html" class="dropdown-item">
+        <!-- Ganti SVG dengan Gambar -->
+        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+        SEWA KENDARAAN
+      </a>
+      <a href="layanandigital.html" class="dropdown-item">
+        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+        LAYANAN HIBURAN
+      </a>
     </div>
   </div>
-</div>
-    <span class="nav-item">PUSAT BANTUAN</span>
-    <span class="nav-item">HUBUNGI KAMI</span>
-  </nav>
+  <span class="nav-item">PUSAT BANTUAN</span>
+  <span class="nav-item">HUBUNGI KAMI</span>
+</nav>
 
   <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
 </header>
@@ -158,36 +157,47 @@
       <div class="feature-item animate-float-slow">
         <div class="icon">📱</div>
         <h3>Booking Mudah Online</h3>
-        <p>Pesan mobil langsung dari smartphone Anda, tanpa ribet.</p>
+        <p>Pesan mobil langsung dari website Anda, tanpa ribet.</p>
       </div>
     </section>
 
+
     <!-- Partner Grid -->
-    <section class="partners">
-      <h2>Solusi Digital Pendukung Perjalanan & Bisnismu</h2>
-      <div class="partner-grid">
-        <div class="partner-item animate-float">
-          <img src="images/eazy.png" alt="Eazy (Telkom)" />
-          <h3>Eazy (Telkom)</h3>
-          <p>Solusi manajemen CCTV dan perangkat IoT untuk keamanan armada dan kantor.</p>
-        </div>
-        <div class="partner-item animate-float">
-          <img src="images/netmonk.jpeg" alt="Netmonk" />
-          <h3>Netmonk</h3>
-          <p>Monitoring performa jaringan digital secara real-time dan proaktif.</p>
-        </div>
-        <div class="partner-item animate-float">
-          <img src="images/produkgameqoo.jpg" alt="GameQoo" />
-          <h3>GameQoo</h3>
-          <p>Cloud gaming platform: hiburan dalam kendaraan tanpa perlu instalasi.</p>
-        </div>
-        <div class="partner-item animate-float">
-          <img src="images/oca.png" alt="OCA Omnichannel" />
-          <h3>OCA Omnichannel</h3>
-          <p>Satu pintu untuk layanan ekspedisi dan logistik online terintegrasi.</p>
-        </div>
+    <!-- Partner Grid -->
+<section class="partners">
+  <h2>Solusi Digital Pendukung Perjalanan & Bisnismu</h2>
+  <div class="partner-grid">
+    <a href="eazy.html">
+      <div class="partner-item animate-float">
+        <img src="images/eazy.png" alt="Eazy (Telkom)" />
+        <h3>Eazy (Telkom)</h3>
+        <p>Solusi manajemen CCTV dan perangkat IoT untuk keamanan armada dan kantor.</p>
       </div>
-    </section>
+    </a>
+    <a href="netmonk.html">
+      <div class="partner-item animate-float">
+        <img src="images/netmonk.png" alt="Netmonk" />
+        <h3>Netmonk</h3>
+        <p>Monitoring performa jaringan digital secara real-time dan proaktif.</p>
+      </div>
+    </a>
+    <a href="gameqoo.html">
+      <div class="partner-item animate-float">
+        <img src="images/" alt="GameQoo" />
+        <h3>GameQoo</h3>
+        <p>Cloud gaming platform: hiburan dalam kendaraan tanpa perlu instalasi.</p>
+      </div>
+    </a>
+    <a href="oca.html">
+      <div class="partner-item animate-float">
+        <img src="images/oca.png" alt="OCA Omnichannel" />
+        <h3>OCA Omnichannel</h3>
+        <p>Satu pintu untuk layanan ekspedisi dan logistik online terintegrasi.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
 
     <!-- Promo Section -->
     <section class="promo">
@@ -208,48 +218,61 @@
 
   <div class="car-grid">
     <!-- DFSK -->
-    <div class="car-card">
-      <img src="images/dfsk.png" alt="DFSK G560">
-      <h4>DFSK G560 1.5 CVT TURBO</h4>
-      <div class="price">Rp. 400.000</div>
-    </div>
+    <a href="dfskterios.html">
+      <div class="car-card">
+        <img src="images/dfsk.png" alt="DFSK G560">
+        <h4>DFSK G560 1.5 CVT TURBO</h4>
+        <div class="price">Rp. 400.000</div>
+      </div>
+    </a>
 
     <!-- Wuling Cortez -->
-    <div class="car-card">
-      <img src="images/cortez.png" alt="Wuling Cortez">
-      <h4>Wuling Cortez</h4>
-      <div class="price">Rp. 450.000</div>
-    </div>
+    <a href="wulingc.html">
+      <div class="car-card">
+        <img src="images/cortez.png" alt="Wuling Cortez">
+        <h4>Wuling Cortez</h4>
+        <div class="price">Rp. 450.000</div>
+      </div>
+    </a>
 
-     <!-- Wuling Confero -->
-    <div class="car-card">
-      <img src="images/confero.png" alt="Wuling Confero">
-      <h4>Wuling Confero</h4>
-      <div class="price">Rp. 350.000</div>
-    </div>
+    <!-- Wuling Confero -->
+    <a href="wulinginova.html">
+      <div class="car-card">
+        <img src="images/confero.png" alt="Wuling Confero">
+        <h4>Wuling Confero</h4>
+        <div class="price">Rp. 350.000</div>
+      </div>
+    </a>
 
     <!-- Viar V1 -->
-    <div class="car-card">
-      <img src="images/viar-v1.png" alt="Viar V1">
-      <h4>VIAR V1 200</h4>
-      <div class="price">Rp. 120.000</div>
-    </div>
+    <a href="viarv1.html">
+      <div class="car-card">
+        <img src="images/viar-v1.png" alt="Viar V1">
+        <h4>VIAR V1 200</h4>
+        <div class="price">Rp. 120.000</div>
+      </div>
+    </a>
 
     <!-- Viar Vintech -->
-    <div class="car-card">
-      <img src="images/viar-vintech.png" alt="Viar Vintech">
-      <h4>VIAR VINTECH 200</h4>
-      <div class="price">Rp. 150.000</div>
-    </div>
+    <a href="viarvin.html">
+      <div class="car-card">
+        <img src="images/viar-vintech.png" alt="Viar Vintech">
+        <h4>VIAR VINTECH 200</h4>
+        <div class="price">Rp. 150.000</div>
+      </div>
+    </a>
 
-     <!-- SUZUKI CARRY duluan -->
-    <div class="car-card">
-      <img src="images/suzuki-carry.png" alt="Suzuki Carry">
-      <h4>Suzuki Carry</h4>
-      <div class="price">Rp. 300.000</div>
-    </div>
+    <!-- SUZUKI CARRY -->
+    <a href="suzukicarry.html">
+      <div class="car-card">
+        <img src="images/suzuki-carry.png" alt="Suzuki Carry">
+        <h4>Suzuki Carry</h4>
+        <div class="price">Rp. 300.000</div>
+      </div>
+    </a>
   </div>
 </section>
+
 
 <footer class="site-footer">
   <div class="footer-top">

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Bantuan - Rental & Akun Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-50px); }
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: rgba(220, 20, 60, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #dc143c;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: #dc143c;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+          h3 {
+            color: #fff0f0;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border-radius: 2px;
+        }
+
+        .accordion {
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion::before {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc143c;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active::before {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .accordion:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.2);
+            border-color: #dc143c;
+        }
+
+        .panel {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .panel h3 {
+            color: #dc143c;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #dc143c;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            color: #dc143c;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            header {
+                padding: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .accordion {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            .panel {
+                padding: 1.5rem;
+            }
+        }
+
+        
+.site-footer {
+  background-color: #161414;
+  color: #fff;
+  padding: 60px 80px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.footer-top h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.footer-top p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-left h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 30px 0 10px;
+}
+
+.footer-left p {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.footer-left input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 14px;
+  background: #333;
+  border: none;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.footer-left button {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: #888;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.social-icons img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.footer-map {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 40px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+footer hr {
+  border: 0;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+}
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #b91c3c, #991b3c);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🚗 Rental & Akun Premium</div>
+            <div class="subtitle">Solusi Lengkap untuk Kebutuhan Rental dan Entertainment</div>
+            <nav>
+                <a href="#faq">📋 FAQ</a>
+                <a href="#ketentuan">📄 Ketentuan Layanan</a>
+                <a href="#syarat">⚖️ Syarat Ketentuan</a>
+                <a href="#privasi">🔒 Kebijakan Privasi</a>
+            </nav>
+        </header>
+
+        <section class="section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="accordion">🚗 Bagaimana cara menyewa kendaraan?</div>
+            <div class="panel">
+                <h3>Panduan Lengkap Menyewa Kendaraan</h3>
+                <p>Ikuti langkah-langkah berikut untuk menyewa kendaraan dengan mudah dan aman:</p>
+                
+                <div class="step">
+                    <div class="step-number">1️⃣ Cari Kendaraan yang Dibutuhkan</div>
+                    <p>Di halaman utama, gunakan form pencarian untuk memilih lokasi penjemputan, jenis kendaraan, dan tanggal sewa. Sistem akan menampilkan pilihan kendaraan yang tersedia sesuai kebutuhan Anda.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2️⃣ Pilih Kendaraan & Lihat Detailnya</div>
+                    <p>Telusuri daftar kendaraan, baca detail spesifikasi, fasilitas, serta harga sewa. Pastikan kendaraan sesuai dengan kebutuhan perjalanan Anda.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3️⃣ Isi Data Diri & Dokumen Pendukung</div>
+                    <p>Setelah memilih kendaraan, Anda akan diminta mengisi formulir data pribadi, kontak darurat, dan mengunggah dokumen pendukung seperti KTP dan SIM. Data ini penting untuk verifikasi dan keamanan transaksi.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4️⃣ Pilih Metode Pembayaran</div>
+                    <p>Lanjutkan ke halaman pembayaran, pilih metode pembayaran yang diinginkan, seperti transfer bank melalui virtual account, dan periksa total biaya sewa yang dihitung otomatis.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5️⃣ Lakukan Pembayaran</div>
+                    <p>Ikuti instruksi pembayaran dengan mentransfer ke nomor virtual account yang diberikan. Perhatikan timer batas waktu pembayaran untuk memastikan booking Anda tetap aktif.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6️⃣ Konfirmasi & Dapatkan Bukti Booking</div>
+                    <p>Setelah pembayaran berhasil, Anda akan menerima konfirmasi "Pembayaran Sukses" beserta detail booking, termasuk lokasi penjemputan dan pengembalian kendaraan.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">7️⃣ Penjemputan Kendaraan</div>
+                    <p>Datang ke lokasi penjemputan sesuai jadwal atau tunggu kendaraan diantar (jika layanan antar tersedia). Tunjukkan bukti booking Anda kepada petugas.</p>
+                </div>
+            </div>
+
+            <div class="accordion">⭐ Bagaimana membeli akun premium?</div>
+            <div class="panel">
+                <h3>Panduan Membeli Akun Premium</h3>
+                <p>Untuk membeli akun Premium melalui platform kami, ikuti langkah-langkah berikut:</p>
+                
+                <div class="step">
+                    <div class="step-number">1️⃣ Pilih Paket Premium yang Diinginkan</div>
+                    <p>Masuk ke halaman produk Premium Entertainment, lalu pilih paket langganan sesuai kebutuhan Anda, misalnya paket 1 bulan, 3 bulan, atau lainnya. Baca detail manfaatnya agar sesuai dengan kebutuhan hiburan Anda.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2️⃣ Isi Informasi Kontak</div>
+                    <p>Setelah memilih paket, isi formulir dengan alamat email aktif atau nomor kontak. Email ini akan digunakan untuk mengirimkan detail akun Premium Anda.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3️⃣ Tentukan Jumlah Pembelian</div>
+                    <p>Masukkan jumlah pembelian jika Anda ingin membeli lebih dari satu akun dalam satu transaksi.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4️⃣ Pilih Metode Pembayaran</div>
+                    <p>Pilih metode pembayaran yang tersedia, seperti transfer bank (virtual account) atau dompet digital (DANA, ShopeePay, Gopay, QRIS, dan lainnya). Periksa total harga yang akan ditampilkan otomatis.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5️⃣ Lakukan Pembayaran</div>
+                    <p>Ikuti instruksi pembayaran sesuai metode yang dipilih. Jika menggunakan virtual account, transfer sesuai nominal ke nomor yang diberikan sebelum batas waktu pembayaran habis.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6️⃣ Terima Konfirmasi & Detail Akun</div>
+                    <p>Setelah pembayaran berhasil diverifikasi, Anda akan melihat halaman "Pembayaran Berhasil" dan menerima detail akun Premium melalui email yang telah Anda daftarkan.</p>
+                </div>
+            </div>
+
+            <div class="accordion">📧 Bagaimana proses pengiriman akun?</div>
+            <div class="panel">
+                <h3>Proses Pengiriman Akun Premium</h3>
+                <p>Setelah Anda berhasil melakukan pembayaran, sistem kami akan secara otomatis memverifikasi transaksi Anda. Jika pembayaran terkonfirmasi, detail akun Premium akan dikirimkan ke email yang Anda masukkan saat pembelian.</p>
+                
+                <div class="step">
+                    <div class="step-number">⏰ Waktu Pengiriman</div>
+                    <p>Biasanya, akun dikirim dalam waktu maksimal 1×24 jam, tetapi umumnya jauh lebih cepat, tergantung antrean dan validasi sistem.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">📮 Periksa Email</div>
+                    <p>Pastikan Anda memeriksa inbox, folder Spam, atau Promosi jika email belum masuk ke kotak masuk utama.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">🆘 Bantuan</div>
+                    <p>Jika dalam waktu yang dijanjikan akun belum diterima, segera hubungi Pusat Bantuan kami agar tim kami dapat membantu memproses pengiriman akun Anda secepat mungkin.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="ketentuan">
+            <h2>Ketentuan Layanan</h2>
+            <div class="step">
+                <div class="step-number">1️⃣ Pengisian Data yang Benar</div>
+                <p>Pengguna wajib mengisi semua data pribadi dengan lengkap dan benar, termasuk informasi identitas, kontak darurat, alamat email, serta dokumen pendukung seperti KTP dan SIM untuk penyewaan kendaraan, atau email aktif untuk pembelian akun premium. Data palsu atau tidak valid dapat menyebabkan proses transaksi ditolak.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2️⃣ Kepatuhan Terhadap Kebijakan</div>
+                <p>Segala aktivitas penyewaan kendaraan maupun pembelian akun premium harus mengikuti ketentuan dan kebijakan yang berlaku di platform, termasuk syarat usia minimal, kepemilikan SIM yang sah, penggunaan akun sesuai lisensi resmi, dan larangan penyalahgunaan akun atau layanan.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3️⃣ Pembayaran dan Konfirmasi</div>
+                <p>Pengguna bertanggung jawab untuk melakukan pembayaran sesuai instruksi, nominal, dan batas waktu yang ditentukan. Keterlambatan atau kesalahan pembayaran yang tidak terkonfirmasi dapat membatalkan transaksi secara otomatis.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4️⃣ Tindakan Pelanggaran</div>
+                <p>Pelanggaran terhadap ketentuan layanan, seperti penggunaan data palsu, penyalahgunaan akun, penipuan pembayaran, atau tindakan lain yang merugikan platform, dapat berakibat pada pemblokiran akun secara permanen tanpa pengembalian dana (non-refundable) dan tanpa pemberitahuan sebelumnya.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5️⃣ Dukungan & Klarifikasi</div>
+                <p>Untuk pertanyaan atau kendala terkait kebijakan ini, pengguna dapat menghubungi Pusat Bantuan melalui kontak resmi yang tersedia. Tim kami siap membantu memastikan layanan digunakan dengan aman, nyaman, dan sesuai peraturan.</p>
+            </div>
+        </section>
+
+        <section class="section" id="syarat">
+            <h2>Syarat & Ketentuan</h2>
+            <div class="step">
+                <div class="step-number">1️⃣ Tanggung Jawab Pengguna</div>
+                <p>Pengguna bertanggung jawab penuh atas penggunaan akun Premium yang telah dibeli melalui platform kami. Segala aktivitas yang dilakukan menggunakan akun tersebut sepenuhnya menjadi tanggung jawab pemilik akun, termasuk menjaga kerahasiaan detail akun dan tidak membagikannya kepada pihak yang tidak berwenang.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2️⃣ Kebijakan Transaksi Final</div>
+                <p>Semua transaksi pembelian akun Premium bersifat final dan tidak dapat dibatalkan atau diuangkan kembali, kecuali terdapat kesalahan teknis atau kegagalan pengiriman yang terbukti disebabkan oleh sistem kami. Permintaan pembatalan atau pengembalian dana atas alasan pribadi di luar tanggung jawab kami tidak akan diproses.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3️⃣ Kesalahan & Kompensasi</div>
+                <p>Jika terjadi kesalahan pengiriman akun atau akun yang diterima tidak sesuai dengan pesanan, pengguna wajib segera melaporkan melalui Pusat Bantuan maksimal 1×24 jam setelah pembayaran terkonfirmasi. Tim kami akan memproses pengecekan dan memberikan solusi terbaik, berupa penggantian akun baru atau pengembalian dana jika diperlukan.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4️⃣ Larangan Penyalahgunaan</div>
+                <p>Pengguna dilarang menggunakan akun Premium untuk aktivitas ilegal, melanggar ketentuan penyedia layanan resmi, atau diperjualbelikan kembali tanpa izin. Pelanggaran dapat mengakibatkan akun diblokir oleh penyedia layanan atau pihak kami tanpa kompensasi apa pun.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5️⃣ Persetujuan Pengguna</div>
+                <p>Dengan melakukan pembelian, pengguna dianggap telah membaca, memahami, dan menyetujui seluruh Syarat & Ketentuan ini tanpa terkecuali.</p>
+            </div>
+        </section>
+
+        <section class="section" id="privasi">
+            <h2>Kebijakan Privasi</h2>
+            <div class="step">
+                <div class="step-number">1️⃣ Penghargaan Terhadap Privasi Pengguna</div>
+                <p>Kami berkomitmen untuk menjaga kerahasiaan dan keamanan semua data pribadi pengguna. Setiap informasi yang Anda berikan, seperti nama, alamat email, nomor telepon, dokumen identitas (KTP, SIM), atau data pembayaran, hanya akan digunakan untuk mendukung kelancaran transaksi dan layanan.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2️⃣ Tujuan Pengumpulan Data</div>
+                <p>Data pribadi dikumpulkan semata-mata untuk keperluan verifikasi identitas, proses pemesanan kendaraan, pembelian akun premium, pengiriman detail akun, komunikasi terkait transaksi, serta peningkatan kualitas layanan kami.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3️⃣ Kerahasiaan Data</div>
+                <p>Kami tidak akan menjual, membagikan, atau menyewakan data pribadi Anda kepada pihak ketiga mana pun tanpa persetujuan Anda, kecuali jika diwajibkan oleh hukum atau diperlukan untuk keperluan penegakan kebijakan (misalnya dalam hal penipuan atau pelanggaran).</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4️⃣ Perlindungan & Keamanan Data</div>
+                <p>Kami menerapkan langkah-langkah keamanan teknis dan organisasi yang wajar untuk melindungi data pribadi Anda dari akses, penggunaan, atau pengungkapan yang tidak sah. Data Anda disimpan di server yang aman dengan sistem perlindungan yang terus diperbarui.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5️⃣ Hak Pengguna</div>
+                <p>Anda berhak meminta pembaruan, perbaikan, atau penghapusan data pribadi yang kami simpan, dengan menghubungi tim Pusat Bantuan kami. Permintaan Anda akan diproses sesuai ketentuan dan kebijakan yang berlaku.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6️⃣ Perubahan Kebijakan</div>
+                <p>Kebijakan Privasi ini dapat diperbarui sewaktu-waktu untuk menyesuaikan kebutuhan hukum, teknologi, atau operasional. Segala perubahan akan diinformasikan melalui website resmi kami.</p>
+            </div>
+        </section>
+
+        
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <h3>DON'T HESITATE TO CONTACT US</h3>
+    <p>BAGAIMANA MENEMUKAN SOLUSI YANG TEPAT UNTUK BISNIS ANDA?<br>
+    KONSULTASI DAN RANCANG BERSAMA TIM PROFESSIONAL KAMI.</p>
+  </div>
+
+  <div class="footer-content">
+    <!-- KIRI -->
+    <div class="footer-left">
+      <h3>INFORMATION</h3>
+      <p>
+        PT Inovasi Digital Semesta adalah penyedia solusi digital terintegrasi yang berfokus pada inovasi teknologi,<br>
+        layanan komunikasi, dan hiburan interaktif untuk mendukung pertumbuhan bisnis Anda.
+      </p>
+
+      <div class="social-icons">
+        <img src="images/facebook.png" alt="Facebook">
+        <img src="images/twitter.png" alt="Twitter">
+        <img src="images/instagram.png" alt="Instagram">
+        <img src="images/linkedln.png" alt="LinkedIn">
+      </div>
+
+      <h3>CONTACT US</h3>
+      <p><img src="images/location.svg" alt=""> Alexandria Purple Cimanggis Depok</p>
+      <p><img src="images/email.svg" alt=""> marketing.indista@gmail.com</p>
+
+      <input type="email" placeholder="Email Address">
+      <button>SUBSCRIBE</button>
+    </div>
+
+    <!-- KANAN -->
+    <div class="footer-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0358434992466!2d106.85198187484795!3d-6.2571381612305325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f22dcf56d5b1%3A0xfad2764f11146a5e!2sPT.%20Inovasi%20Digital%20Semesta%20(Indista)!5e0!3m2!1sen!2sid!4v1718596355090!5m2!1sen!2sid"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+    </div>
+
+    <script>
+        // Enhanced accordion functionality
+        const accordions = document.querySelectorAll('.accordion');
+        
+        accordions.forEach(accordion => {
+            accordion.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
+                
+                // Close all accordions
+                accordions.forEach(acc => {
+                    acc.classList.remove('active');
+                    acc.nextElementSibling.style.display = 'none';
+                });
+                
+                // Toggle current accordion
+                if (!isActive) {
+                    this.classList.add('active');
+                    this.nextElementSibling.style.display = 'block';
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.transform = 'translateY(-5px)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+        });
+    </script>
+</body>
+</html>

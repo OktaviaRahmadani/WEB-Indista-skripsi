@@ -9,41 +9,46 @@
 
 <body>
   <!-- === NAVBAR === -->
-  <header class="header">
-    <div class="logo-area">
-      <img src="images/logo.png" alt="Logo Indista" class="logo">
+  <nav class="nav">
+  <div class="nav-item dropdown">
+    <span>PRODUK KAMI</span>
+    <!-- Tetap pakai SVG untuk icon dropdown -->
+    <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="dropdown-menu">
+      <a href="daftarcar.html" class="dropdown-item">
+        <!-- Ganti SVG dengan Gambar -->
+        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+        SEWA KENDARAAN
+      </a>
+      <a href="layanandigital.html" class="dropdown-item">
+        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+        LAYANAN HIBURAN
+      </a>
     </div>
-    <nav class="nav">
-      <div class="nav-item dropdown">
-        <span>PRODUK KAMI</span>
-        <svg class="dropdown-icon" width="12" height="8"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="dropdown-menu">
-          <div class="dropdown-item"><img src="images/checkmark.png" alt="">SEWA KENDARAAN</div>
-          <div class="dropdown-item"><img src="images/business.png" alt="">INDISTA UNTUK BISNIS</div>
-        </div>
-      </div>
-      <span class="nav-item">PUSAT BANTUAN</span>
-      <span class="nav-item">HUBUNGI KAMI</span>
-    </nav>
-    <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-  </header>
+  </div>
+  <span class="nav-item">PUSAT BANTUAN</span>
+  <span class="nav-item">HUBUNGI KAMI</span>
+</nav>
 
 
   <div class="container">
-    <img src="images/viar-vintech.png" alt="Mobil" class="main-image" id="mainImage" />
+    <img src="images/cortez.png" alt="Mobil" class="main-image" id="mainImage" />
     <div class="thumbnail">
-      <img src="images/viar-vintech.png" onclick="gantiGambar(this)" />
-      <img src="images/viarvintech2.png" onclick="gantiGambar(this)" />
+      <img src="images/cortez.png" onclick="gantiGambar(this)" />
+      <img src="images/wulinginova2.png" onclick="gantiGambar(this)" />
     </div>
 
-    <div class="car-title">VIAR VINTECH 200</div>
-    <div class="car-price">Rp. 150.000</div>
+    <div class="car-title">WULING CORTEZ 1.5 TURBO - INNOVA</div>
+    <div class="car-price">Rp. 450.000</div>
 
     <div class="car-specs">
-      <div><img src="images/icon-year.png" height="24"/><div>2018</div></div>
+      <div><img src="images/icon-year.png" height="24"/><div>2022</div></div>
       <div><img src="images/icon-fuel.png" height="24"/><div>Pertamax</div></div>
       <div><img src="images/icon-color.png" height="24"/><div>Silver</div></div>
-      <div><img src="images/icon-transmission.png" height="24"/><div>Manual</div></div>
+      <div><img src="images/icon-transmission.png" height="24"/><div>CVT</div></div>
     </div>
 
     <div class="frame-box">

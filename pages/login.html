@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="login.css" />
 </head>
 <body>
-
+  
 <div class="login-page">
   <div class="login-container">
     <div class="login-left">
@@ -18,7 +18,10 @@
       <input type="email" placeholder="Masukan Email" />
       <input type="password" placeholder="Masukan Kata Sandi" />
       <div class="forgot"><a href="forgot-password.html">Lupa kata sandi ?</a></div>
-      <button class="login-btn">Sign in</button>
+
+      <!-- ✅ Perbaikan di sini: pakai onclick="login()" -->
+      <button onclick="login()" class="login-btn">Sign in</button>
+
       <div class="separator">Or sign in with</div>
       <button class="google-btn">
         <img src="images/google.png" /> Google
@@ -27,6 +30,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  function login() {
+    localStorage.setItem('isLoggedIn', 'true');
+    window.location.href = 'index.html';
+  }
+</script>
 
 </body>
 </html>

@@ -461,6 +461,30 @@ body {
   text-align: center;
 }
 
+a {
+    display: block;
+    text-decoration: none; /* Opsional: untuk menghapus garis bawah pada tautan */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Atur jumlah kolom sesuai kebutuhan */
+    gap: 20px;
+}
+
+.grid-item-link {
+    display: block; /* Pastikan a berfungsi sebagai blok agar seluruh div bisa diklik */
+    text-decoration: none; /* Menghapus garis bawah */
+}
+
+.partner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
 .partner-grid {
   display: grid;
   gap: 1.5rem;

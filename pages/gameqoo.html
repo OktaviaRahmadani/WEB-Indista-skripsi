@@ -12,17 +12,28 @@
   <header class="header">
     <div class="logo-area"><img src="images/logo.png" alt="Logo Indista" class="logo"></div>
     <nav class="nav">
-      <div class="nav-item dropdown">
-        <span>PRODUK KAMI</span>
-        <svg class="dropdown-icon" width="12" height="8"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/></svg>
-        <div class="dropdown-menu">
-          <div class="dropdown-item"><img src="images/checkmark.png" alt="">SEWA KENDARAAN</div>
-          <div class="dropdown-item"><img src="images/business.png" alt="">INDISTA UNTUK BISNIS</div>
-        </div>
-      </div>
-      <span class="nav-item">PUSAT BANTUAN</span>
-      <span class="nav-item">HUBUNGI KAMI</span>
-    </nav>
+  <div class="nav-item dropdown">
+    <span>PRODUK KAMI</span>
+    <!-- Tetap pakai SVG untuk icon dropdown -->
+    <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="dropdown-menu">
+      <a href="daftarcar.html" class="dropdown-item">
+        <!-- Ganti SVG dengan Gambar -->
+        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+        SEWA KENDARAAN
+      </a>
+      <a href="layanandigital.html" class="dropdown-item">
+        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+        LAYANAN HIBURAN
+      </a>
+    </div>
+  </div>
+  <span class="nav-item">PUSAT BANTUAN</span>
+  <span class="nav-item">HUBUNGI KAMI</span>
+</nav>
     <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
   </header>
 
@@ -38,24 +49,24 @@
       <h2>Keunggulan GameQoo</h2>
       <div class="cards">
         <div class="card">
-          <img src="images/cloud-gaming.jpg" alt="Cloud Gaming">
+          <img src="images/gameqoo2.jpg" alt="Cloud Gaming">
           <div class="card-content">
             <h3>Tanpa Install</h3>
             <p>Main langsung tanpa unduhan atau perangkat khusus. Cukup browser!</p>
           </div>
         </div>
         <div class="card">
-          <img src="images/game-library.jpg" alt="Game Library">
+          <img src="images/gameqoo3.jpg" alt="Game Library">
           <div class="card-content">
             <h3>100+ Game Populer</h3>
             <p>Dari simulasi, racing, hingga casual – semua dalam satu platform.</p>
           </div>
         </div>
         <div class="card">
-          <img src="images/gameqoo-dashboard.jpg" alt="Dashboard">
+          <img src="images/GameQoov.png" alt="Dashboard">
           <div class="card-content">
-            <h3>Terintegrasi Kendaraan</h3>
-            <p>Support head unit mobil Indista dan Android Auto untuk hiburan di perjalanan.</p>
+            <h3> Streaming Game Tanpa Instalasi</h3>
+            <p>GameQoo adalah layanan cloud gaming yang memungkinkan pengguna memainkan >100 game berkualitas tinggi</p>
           </div>
         </div>
       </div>
@@ -79,8 +90,8 @@
         </div>
         <div class="card">
           <div class="card-content">
-            <h3>GameQoo untuk Bisnis</h3>
-            <p>Untuk kendaraan fleet atau rental. Bisa custom branding & panel admin.</p>
+            <h3>GameQoo Rutin di Perbarui</h3>
+            <p>Koleksi GameQoo mencakup berbagai genre (action, racing, puzzle, RPG) dan terus diperbarui setiap bulan.</p>
           </div>
         </div>
       </div>
