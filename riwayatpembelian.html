@@ -105,7 +105,7 @@
       color: #ff0000;
     }
 
-    .login-button {
+    .logout-button {
       background: red;
       color: #fff;
       font-weight: bold;
@@ -118,7 +118,7 @@
       box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
     }
 
-    .login-button:hover {
+    .logout-button:hover {
       background: darkred;
     }
 
@@ -222,32 +222,15 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo-area">
-      <img src="/images/logo.png" alt="Logo Indista" class="logo">
-    </div>
-    <nav class="nav">
-      <div class="nav-item dropdown">
-        <span>PRODUK KAMI</span>
-        <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
-          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="dropdown-menu">
-          <div class="dropdown-item">
-            <img src="/images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
-            SEWA KENDARAAN
-          </div>
-          <div class="dropdown-item">
-            <img src="/images/business.png" alt="Bisnis Icon" width="16" height="16" />
-            INDISTA UNTUK BISNIS
-          </div>
-        </div>
-      </div>
-      <span class="nav-item">PUSAT BANTUAN</span>
-      <span class="nav-item">HUBUNGI KAMI</span>
-    </nav>
-    <button onclick="window.location.href='/pages/login.html'" class="login-button">LOGIN</button>
-  </header>
+   <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
   <div class="main-content">
     <h1 style="text-align: center; color: var(--primary);">Riwayat Pembelian & Booking</h1>
@@ -323,7 +306,7 @@
             <td>BCA</td>
             <td>Selesai</td>
             <td>1 Januari 2025</td>
-            <td><button class="login-button" onclick="showDetail('Email: user1@gmail.com\nProduk: Premium 3 Bulan Privat\nTanggal: 1 Januari 2025\nMetode: BCA\nStatus: Selesai')">Lihat</button></td>
+            <td><button class="logout-button" onclick="showDetail('Email: user1@gmail.com\nProduk: Premium 3 Bulan Privat\nTanggal: 1 Januari 2025\nMetode: BCA\nStatus: Selesai')">Lihat</button></td>
           </tr>
           <tr>
             <td>Langganan Premium</td>
@@ -333,7 +316,7 @@
             <td>QRIS</td>
             <td>Selesai</td>
             <td>15 Februari 2025</td>
-            <td><button class="login-button" onclick="showDetail('Email: user2@gmail.com\nProduk: Premium 1 Bulan Sharing\nTanggal: 15 Februari 2025\nMetode: QRIS\nStatus: Selesai')">Lihat</button></td>
+            <td><button class="logout-button" onclick="showDetail('Email: user2@gmail.com\nProduk: Premium 1 Bulan Sharing\nTanggal: 15 Februari 2025\nMetode: QRIS\nStatus: Selesai')">Lihat</button></td>
           </tr>
           <tr>
             <td>Langganan Premium</td>
@@ -343,7 +326,7 @@
             <td>Mandiri</td>
             <td>Batal</td>
             <td>10 Maret 2025</td>
-            <td><button class="login-button" onclick="showDetail('Email: user3@gmail.com\nProduk: Premium 6 Bulan Privat\nTanggal: 10 Maret 2025\nMetode: Mandiri\nStatus: Batal')">Lihat</button></td>
+            <td><button class="logout-button" onclick="showDetail('Email: user3@gmail.com\nProduk: Premium 6 Bulan Privat\nTanggal: 10 Maret 2025\nMetode: Mandiri\nStatus: Batal')">Lihat</button></td>
           </tr>
         </tbody>
       </table>
@@ -352,7 +335,7 @@
 
     <dialog id="detailDialog">
     <p id="detailText"></p>
-    <button onclick="document.getElementById('detailDialog').close()" class="login-button">Tutup</button>
+    <button onclick="document.getElementById('detailDialog').close()" class="logout-button">Tutup</button>
   </dialog>
 
 
@@ -390,6 +373,13 @@
 
     function exportData() {
       alert("🔧 Fitur export masih dalam pengembangan");
+    }
+
+    function handleLogout() {
+      if (confirm("Apakah Anda yakin ingin logout?")) {
+        // Redirect ke halaman login atau halaman utama
+        window.location.href = '/pages/login.html';
+      }
     }
 
     

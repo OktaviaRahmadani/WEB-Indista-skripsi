@@ -391,6 +391,16 @@ footer hr {
     </style>
 </head>
 <body>
+     <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
     <div class="container">
         <header>
             <div class="logo">🚗 Rental & Akun Premium</div>
@@ -682,5 +692,7 @@ footer hr {
             }
         });
     </script>
+<script src="navbar.js"></script>
+
 </body>
 </html>

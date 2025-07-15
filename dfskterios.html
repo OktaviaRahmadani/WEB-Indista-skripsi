@@ -8,25 +8,15 @@
 </head>
 
 <body>
-  <!-- === NAVBAR === -->
-  <header class="header">
-    <div class="logo-area">
-      <img src="images/logo.png" alt="Logo Indista" class="logo">
-    </div>
-    <nav class="nav">
-      <div class="nav-item dropdown">
-        <span>PRODUK KAMI</span>
-        <svg class="dropdown-icon" width="12" height="8"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="dropdown-menu">
-          <div class="dropdown-item"><img src="images/checkmark.png" alt="">SEWA KENDARAAN</div>
-          <div class="dropdown-item"><img src="images/business.png" alt="">INDISTA UNTUK BISNIS</div>
-        </div>
-      </div>
-      <span class="nav-item">PUSAT BANTUAN</span>
-      <span class="nav-item">HUBUNGI KAMI</span>
-    </nav>
-    <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-  </header>
+   <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
 
   <div class="container">
@@ -134,9 +124,30 @@
             <span id="keteranganHarga">Harga akan bertambah jika memilih Lokasi Lain.</span> <!-- Keterangan Tambahan -->
         </div>
 
-        <button class="button-red">Lanjut</button>
+        <button class="button-red" onclick="showModal()">Lanjut</button>
     </div>
-
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      
+      <div class="lock-icon">
+        <div class="lock-shackle"></div>
+        <div class="lock-body">
+          <div class="lock-keyhole"></div>
+        </div>
+      </div>
+      
+      <div class="modal-text">
+        Silakan login terlebih dahulu untuk melanjutkan proses booking sewa kendaraan Anda
+      </div>
+      
+      <div class="modal-buttons">
+        <button class="modal-btn login-btn" onclick="handleLogin()">Login Sekarang</button>
+        <button class="modal-btn register-btn" onclick="handleRegister()">Daftar Sekarang</button>
+      </div>
+    </div>
+  </div>
+  
     <script>
       // Mendeklarasikan semua elemen yang diperlukan hanya sekali
 const lokasiRadio = document.querySelectorAll('input[name="lokasi"]');
@@ -215,7 +226,39 @@ updateTotalHarga();
     window.location.href = "booking.html";
 });
     </script>
-    
+
+    <script>
+       // Fungsi modal
+    function showModal() {
+      document.getElementById('loginModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function handleLogin() {
+      window.location.href = "login.html";
+    }
+
+    function handleRegister() {
+      window.location.href = "register.html";
+    }
+
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('loginModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    // Inisialisasi
+    updateTotalHarga();
+  </script>
+
+   <script src="navbar.js"></script> 
 </body>
 </html>
 

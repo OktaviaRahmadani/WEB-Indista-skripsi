@@ -7,35 +7,15 @@
   <link rel="stylesheet" href="promosi.css"/>
 </head>
 <body>
+ <div id="navbar"></div>
 
-  <!-- NAVBAR -->
-  <header class="header">
-    <div class="logo-area"><img src="images/logo.png" alt="Logo Indista" class="logo"></div>
-    <nav class="nav">
-  <div class="nav-item dropdown">
-    <span>PRODUK KAMI</span>
-    <!-- Tetap pakai SVG untuk icon dropdown -->
-    <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
-      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-
-    <div class="dropdown-menu">
-      <a href="daftarcar.html" class="dropdown-item">
-        <!-- Ganti SVG dengan Gambar -->
-        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
-        SEWA KENDARAAN
-      </a>
-      <a href="layanandigital.html" class="dropdown-item">
-        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
-        LAYANAN HIBURAN
-      </a>
-    </div>
-  </div>
-  <span class="nav-item">PUSAT BANTUAN</span>
-  <span class="nav-item">HUBUNGI KAMI</span>
-</nav>
-    <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-  </header>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
   <!-- MAIN CONTENT -->
   <main class="container">
@@ -148,6 +128,6 @@
         width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
-
+<script src="navbar.js"></script>
 </body>
 </html>

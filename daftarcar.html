@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar Mobil - Indala Rental</title>
+  <link rel="stylesheet" href="daftarcar.css">
+</head>
+<body>
+  
+  <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>BEBASKAN PERJALANANMU</h1>
+    <h2>SEWA MOBIL MUDAH, CEPAT, & AMAN</h2>
+    <p>Temukan kenyamanan maksimal saat bepergian bersama layanan sewa mobil terpercaya dan berkualitas dari kami</p>
+  </div>
+
+  <div class="hero-image-wrapper">
+      <div class="bg-layer"></div>
+      <div class="blur-container">
+        <div class="blur-circle red"></div>
+        <div class="blur-circle green"></div>
+      </div>
+      </div>
+
+    <!-- Mobil 3D -->
+    <div class="carrousel-track">
+      <img src="images/mobil-3d.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-black.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-red.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-white.png" class="hero-car" alt="Mobil 3D">
+      <img src="images/mobil-3d-blue.png" class="hero-car" alt="Mobil 3D">
+    </div>
+  </div>
+</section>
+
+<!-- TAMBAHKAN ELEMEN TRANSISI INI -->
+<div class="section-transition"></div>
+
+<!-- WRAPPER UNTUK BACKGROUND PUTIH -->
+ <div class="cars-wrapper">
+    <section class="cars-section">
+      <!-- CARD #1 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/dfsk.png" alt="DFSK 580">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">DFSK 580 1.5 CVT TURBO - TERIOS</h3>
+          <p class="car-description">Nikmati kenyamanan dan performa tinggi dengan SUV elegan. Dilengkapi mesin turbo 1.5L CVT yang tangguh dan efisien.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 400.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='dfskterios.html'">Sewa Mobil</button>
+        </div>
+      </div>
+
+      <!-- CARD #2 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/confero.png" alt="Wuling Confero">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">WULING CONFERO S</h3>
+          <p class="car-description">MPV keluarga yang luas, nyaman, dan hemat BBM. Dilengkapi sistem keselamatan modern serta desain interior elegan.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 350.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='wulingc.html'">Sewa Mobil</button>
+        </div>
+      </div>
+
+      <!-- CARD #3 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/cortez.png" alt="Wuling Cortez">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">WULING CORTEZ 1.5 CVT TURBO - INNOVA</h3>
+          <p class="car-description">Pilihan cerdas dengan mesin turbo bertenaga dan ruang kabin luas menjamin kenyamanan sepanjang perjalanan.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 450.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='wulinginova.html'">Sewa Mobil</button>
+        </div>
+      </div>
+
+      <!-- CARD #4 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/suzuki-carry.png" alt="Suzuki Carry">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">SUZUKI CARRY PICK UP</h3>
+          <p class="car-description">Solusi tepat untuk kebutuhan logistik dan bisnis Anda. Daya angkut besar dan mesin handal untuk usaha.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 300.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='suzukicarry.html'">Sewa Mobil</button>
+        </div>
+      </div>
+
+      <!-- CARD #5 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/viar-vintech.png" alt="Viar Vintech">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">VIAR VINTECH 200</h3>
+          <p class="car-description">Motor modern 200cc, irit bahan bakar, nyaman untuk harian. Dilengkapi fitur keselamatan untuk mobilitas kota.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 150.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='viarvin.html'">Sewa Motor</button>
+        </div>
+      </div>
+
+      <!-- CARD #6 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/viar-v1.png" alt="Viar V1">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">VIAR V1</h3>
+          <p class="car-description">Motor modern 200cc, irit bahan bakar, nyaman untuk harian. Dilengkapi fitur keselamatan untuk mobilitas kota.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 120.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='viarv1.html'">Sewa Motor</button>
+        </div>
+      </div>
+
+      <!-- CARD #7 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/trailsm.png" alt="Trail SM">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">Trail SM Sport GY 150</h3>
+          <p class="car-description">Motor modern 150cc, irit bahan bakar, nyaman untuk harian. Dilengkapi fitur keselamatan untuk mobilitas kota.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 120.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='viaRv1.html'">Sewa Motor</button>
+        </div>
+      </div>
+
+      <!-- CARD #8 -->
+      <div class="car-card">
+        <div class="car-image">
+          <img src="images/mlistrik.png" alt="Volta 401">
+        </div>
+        <div class="car-info">
+          <h3 class="car-title">Volta 401 Reguler</h3>
+          <p class="car-description">Motor listrik modern, hemat energi, ramah lingkungan. Dilengkapi fitur keselamatan untuk mobilitas kota yang berkelanjutan.</p>
+        </div>
+        <div class="car-price-section">
+          <div class="car-price-label">Harga Mulai Dari</div>
+          <div class="car-price">Rp. 130.000 / HARI</div>
+          <button class="rent-button" onclick="window.location.href='viaRv1.html'">Sewa Motor</button>
+        </div>
+      </div>
+    </section>
+  </div>
+<script>
+   // Carousel Automation
+const track = document.querySelector('.carrousel-track');
+let index = 0;
+const total = track.children.length;
+const carWidth = 100 / total;
+
+function moveCarousel() {
+  index = (index + 1) % total;
+  track.style.transform = `translateX(-${index * carWidth}%)`;
+}
+
+setInterval(moveCarousel, 3000);
+
+// Additional animation effects
+const blurCircles = document.querySelectorAll('.blur-circle');
+blurCircles.forEach(circle => {
+  circle.style.animation = `float ${6 + Math.random() * 3}s ease-in-out infinite, pulse ${4 + Math.random() * 2}s ease-in-out infinite`;
+});
+</script>
+
+<script src="navbar.js"></script>
+
+<script src="navbar.js"></script>
+</body>
+</html>

@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1440, initial-scale=1.0">
   <title>Indista - Sewa Mobil</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="chatbot/chatbot.css">
 
 
 </head>
 <body>
-<div id="chatbot-container"></div>
+
+  <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
 <script>
   fetch('chatbot.html')  
@@ -22,37 +31,7 @@
 
  <script src="chatbot/chatbot.js"></script>
 
-<header class="header">
-  <div class="logo-area">
-    <img src="images/logo.png" alt="Logo Indista" class="logo">
-  </div>
 
-  <nav class="nav">
-  <div class="nav-item dropdown">
-    <span>PRODUK KAMI</span>
-    <!-- Tetap pakai SVG untuk icon dropdown -->
-    <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
-      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-
-    <div class="dropdown-menu">
-      <a href="daftarcar.html" class="dropdown-item">
-        <!-- Ganti SVG dengan Gambar -->
-        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
-        SEWA KENDARAAN
-      </a>
-      <a href="layanandigital.html" class="dropdown-item">
-        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
-        LAYANAN HIBURAN
-      </a>
-    </div>
-  </div>
-  <span class="nav-item">PUSAT BANTUAN</span>
-  <span class="nav-item">HUBUNGI KAMI</span>
-</nav>
-
-  <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-</header>
 
 
 <section class="hero">
@@ -212,67 +191,17 @@
     </section>
   </div>
 
-<section class="fleet">
-  <h2>MOBIL TERBAIK KAMI!</h2>
-  <p>PILIHAN MOBIL TERBAIK UNTUK SETIAP PERJALANAN ANDA</p>
-
-  <div class="car-grid">
-    <!-- DFSK -->
-    <a href="dfskterios.html">
-      <div class="car-card">
-        <img src="images/dfsk.png" alt="DFSK G560">
-        <h4>DFSK G560 1.5 CVT TURBO</h4>
-        <div class="price">Rp. 400.000</div>
-      </div>
-    </a>
-
-    <!-- Wuling Cortez -->
-    <a href="wulingc.html">
-      <div class="car-card">
-        <img src="images/cortez.png" alt="Wuling Cortez">
-        <h4>Wuling Cortez</h4>
-        <div class="price">Rp. 450.000</div>
-      </div>
-    </a>
-
-    <!-- Wuling Confero -->
-    <a href="wulinginova.html">
-      <div class="car-card">
-        <img src="images/confero.png" alt="Wuling Confero">
-        <h4>Wuling Confero</h4>
-        <div class="price">Rp. 350.000</div>
-      </div>
-    </a>
-
-    <!-- Viar V1 -->
-    <a href="viarv1.html">
-      <div class="car-card">
-        <img src="images/viar-v1.png" alt="Viar V1">
-        <h4>VIAR V1 200</h4>
-        <div class="price">Rp. 120.000</div>
-      </div>
-    </a>
-
-    <!-- Viar Vintech -->
-    <a href="viarvin.html">
-      <div class="car-card">
-        <img src="images/viar-vintech.png" alt="Viar Vintech">
-        <h4>VIAR VINTECH 200</h4>
-        <div class="price">Rp. 150.000</div>
-      </div>
-    </a>
-
-    <!-- SUZUKI CARRY -->
-    <a href="suzukicarry.html">
-      <div class="car-card">
-        <img src="images/suzuki-carry.png" alt="Suzuki Carry">
-        <h4>Suzuki Carry</h4>
-        <div class="price">Rp. 300.000</div>
-      </div>
-    </a>
-  </div>
-</section>
-
+ <!-- Journey Section (Replacing Fleet) -->
+    <section class="journey-section">
+        <div class="journey-image">
+            <img src="images/jurneycar.png" alt="Car Dashboard">
+        </div>
+        <div class="journey-content">
+            <h2>PERJALANAN LANCAR MULAI DARI KENDARAAN TERBAIK!</h2>
+            <p>Beragam pilihan kendaraan siap menemani perjalanan Anda mulai dari city car hingga MPV. Armada terawat, bersih, dan siap jalan kapan saja. Booking cepat, harga transparan, perjalanan jadi bebas repot.</p>
+            <button class="selengkapnya-btn">Selengkapnya</button>
+        </div>
+    </section>
 
 <footer class="site-footer">
   <div class="footer-top">
@@ -314,8 +243,7 @@
   </div>
   
   <!-- CHATBOT TRIGGER -->
- <img src="images/bot-icon.png" class="chatbot-trigger" onclick="toggleChat(true)" alt="Chatbot">
-
+<div id="chatbot-container"></div>
  <script src="chatbot/chatbot.js"></script>
 
 <!-- CHATBOT PANEL -->
@@ -449,7 +377,8 @@ function getBotReply(msg) {
   return "Maaf, saya belum mengerti. Bisa ulangi dengan kata lain? atau silakan hubungi layanan pelanggan kami melalui WhatsApp +6285156434794  untuk bantuan lebih lanjut.";
 }
  </script>
-
+ 
+<script src="navbar.js"></script>
 
 </body>
 </html>

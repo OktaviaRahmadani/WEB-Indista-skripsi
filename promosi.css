@@ -30,88 +30,6 @@ h1, h2 {
   transform: scale(1.05);
 }
 
-/* === HEADER / NAVBAR === */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background-color: #000;
-  color: white;
-  position: relative;
-  z-index: 10;
-}
-.logo-area img {
-  width: 175px;
-  height: auto;
-}
-.nav {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-.nav-item {
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.nav-item:hover {
-  color: #ff0000;
-}
-.dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.dropdown-icon {
-  color: white;
-}
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
-  min-width: 250px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
-  display: none;
-  color: #333;
-}
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  color: #333;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-}
-.dropdown-item:hover {
-  color: #ff0000;
-}
-.login-button {
-  background: red;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 13px;
-  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
-}
-.login-button:hover {
-  background: darkred;
-}
 
 /* === HERO SECTION === */
 .hero {
@@ -160,11 +78,12 @@ h1, h2 {
   margin-bottom: 20px;
 }
 
+
 .cards {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -204,7 +123,11 @@ h1, h2 {
   line-height: 1.5;
 }
 
-
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+} 
 /* === FOOTER === */
 .site-footer {
   background-color: #161414;

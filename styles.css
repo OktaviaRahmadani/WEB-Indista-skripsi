@@ -1059,97 +1059,94 @@ footer hr {
   background: #c70000;
 }
 
-/* ========== DAFTAR KENDARAAN (FLEET) ========== */
-.fleet {
-  padding: 80px 60px;
-  text-align: center;
-  background: #fff;
-}
 
-.fleet h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  color: #111;
-}
+/* Journey Section (Replacing Fleet) */
+        .journey-section {
+            padding: 80px 60px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
 
-.fleet p {
-  font-size: 15px;
-  color: #555;
-  margin-bottom: 40px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
+        .journey-image {
+            flex: 1;
+            position: relative;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
 
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
+        .journey-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 3;
+        }
 
-.car-card {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s ease;
-}
+        .journey-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.4) 0%, rgba(255, 0, 0, 0.2) 30%, rgba(255, 0, 0, 0.1) 60%, transparent 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+            border-radius: 20px;
+            filter: blur(15px);
+        }
 
-.car-card img {
-  max-width: 100%;
-  height: 180px;
-  object-fit: contain;
-  margin-bottom: 16px;
-}
+        .journey-image:hover::before {
+            opacity: 1;
+            transform: scale(1.1);
+        }
 
-.car-card h4 {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #111;
-}
+        .journey-image:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3), 0 0 60px rgba(255, 0, 0, 0.2);
+        }
 
-.price {
-  background: red;
-  color: white;
-  margin-top: 10px;
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: bold;
-}
+        .journey-content {
+            flex: 1;
+        }
 
-.search-btn {
-  background: red;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
-  margin-top: 10px;
-  transition: background 0.3s ease;
-}
+        .journey-content h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
 
-.search-btn:hover {
-  background: darkred;
-}
+        .journey-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
 
-body {
-  font-family: Arial, sans-serif;
-}
+        .selengkapnya-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .selengkapnya-btn:hover {
+            background: darkred;
+        }
 
 
-/* ChatBot Styles */
 /* Chatbot Icon */
 .chatbot-trigger {
   position: fixed;
@@ -1252,7 +1249,9 @@ body {
   width: 30px;
   height: 30px;
 }
-
+html {
+  scroll-behavior: smooth;
+} 
 /* Footer */
 .chatbot-footer {
   display: flex;

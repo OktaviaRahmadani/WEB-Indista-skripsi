@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan - Dashboard Indista</title>
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ffebee;
+      --background: #fff;
+      --text: #000;
+      --text-light: #666;
+      --accent: #f8f8f8;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --info: #2196f3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--accent);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #000;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .logo-area img {
+      width: 175px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .user-role {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .dropdown-arrow {
+      margin-left: 5px;
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-arrow.active {
+      transform: rotate(180deg);
+    }
+
+    .profile-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      width: 250px;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .profile-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-header {
+      padding: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dropdown-user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown-user-info .user-avatar {
+      width: 45px;
+      height: 45px;
+    }
+
+    .dropdown-user-info .user-name {
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .dropdown-user-info .user-role {
+      color: var(--text-light);
+      font-size: 12px;
+    }
+
+    .dropdown-menu {
+      padding: 10px 0;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .dropdown-item.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-right: 3px solid var(--primary);
+    }
+
+    .dropdown-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 5px 0;
+    }
+
+    .main-content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2rem;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .breadcrumb-item {
+      color: var(--text-light);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb-item.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .breadcrumb-separator {
+      color: #ccc;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .settings-container {
+      display: grid;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .settings-card {
+      background: var(--background);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .settings-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .settings-section {
+      margin-bottom: 2rem;
+    }
+
+    .settings-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch.active {
+      background: var(--primary);
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .toggle-switch.active::before {
+      left: 32px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: var(--primary-light);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .setting-item:hover {
+      background: #fce4ec;
+    }
+
+    .setting-info {
+      flex: 1;
+    }
+
+    .setting-label {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .setting-description {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #388e3c;
+    }
+
+    .btn-warning {
+      background: var(--warning);
+      color: white;
+    }
+
+    .btn-warning:hover {
+      background: #f57c00;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #d32f2f;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .alert.show {
+      display: block;
+    }
+
+    .alert-success {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+
+    .alert-warning {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+    }
+
+    .alert-danger {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav {
+        order: 3;
+      }
+
+      .user-profile {
+        order: 2;
+      }
+
+      .profile-dropdown {
+        position: fixed;
+        top: auto;
+        right: 20px;
+        left: 20px;
+        width: auto;
+      }
+
+      .main-content {
+        padding: 1rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-area">
+      <img src="https://via.placeholder.com/175x50/d32f2f/ffffff?text=INDISTA" alt="Logo Indista" class="logo">
+    </div>
+    <nav class="nav">
+      <span class="nav-item">PRODUK KAMI</span>
+      <span class="nav-item">PUSAT BANTUAN</span>
+      <span class="nav-item">HUBUNGI KAMI</span>
+    </nav>
+    
+    <div class="user-profile" onclick="toggleProfileDropdown()">
+      <img src="https://via.placeholder.com/35x35/d32f2f/ffffff?text=JD" alt="User Avatar" class="user-avatar">
+      <div class="user-info">
+        <span class="user-name">John Doe</span>
+        <span class="user-role">Premium Member</span>
+      </div>
+      <span class="dropdown-arrow">▼</span>
+      
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="dropdown-header">
+          <div class="dropdown-user-info">
+            <img src="https://via.placeholder.com/45x45/d32f2f/ffffff?text=JD" alt="User Avatar" class="user-avatar">
+            <div>
+              <div class="user-name">John Doe</div>
+              <div class="user-role">Premium Member</div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <a href="profil.html" class="dropdown-item">
+            <span class="dropdown-icon">👤</span>
+            <span>Profil Saya</span>
+          </a>
+          <a href="riwayat-pembelian.html" class="dropdown-item">
+            <span class="dropdown-icon">📋</span>
+            <span>Riwayat Pembelian</span>
+          </a>
+          <a href="pengaturan.html" class="dropdown-item active">
+            <span class="dropdown-icon">⚙️</span>
+            <span>Pengaturan</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="bantuan.html" class="dropdown-item">
+            <span class="dropdown-icon">❓</span>
+            <span>Bantuan</span>
+          </a>
+          <a href="#" class="dropdown-item" onclick="handleLogout()">
+            <span class="dropdown-icon">🚪</span>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="breadcrumb">
+      <span class="breadcrumb-item" onclick="window.location.href='#'">Dashboard</span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item active">Pengaturan</span>
+    </div>
+
+    <div class="page-header">
+      <h1 class="page-title">⚙️ Pengaturan</h1>
+      <p class="page-subtitle">Kelola informasi akun dan preferensi Anda</p>
+    </div>
+
+    <div id="alertContainer"></div>
+
+    <div class="settings-container">
+      <!-- Informasi Akun -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">👤 Informasi Akun</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Nama Depan</label>
+              <input type="text" id="firstName" value="John">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Nama Belakang</label>
+              <input type="text" id="lastName" value="Doe">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="john.doe@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Nomor Telepon</label>
+            <input type="tel" id="phone" value="+62 812 3456 7890">
+          </div>
+
+          <div class="form-group">
+            <label for="birthDate">Tanggal Lahir</label>
+            <input type="date" id="birthDate" value="1990-01-01">
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferensi -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🎯 Preferensi</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi Email</div>
+              <div class="setting-description">Terima notifikasi melalui email</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi Push</div>
+              <div class="setting-description">Notifikasi langsung ke browser</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="language">Bahasa</label>
+            <select id="language">
+              <option value="id">Bahasa Indonesia</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="timezone">Zona Waktu</label>
+            <select id="timezone">
+              <option value="WIB">WIB (Jakarta)</option>
+              <option value="WITA">WITA (Makassar)</option>
+              <option value="WIT">WIT (Jayapura)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Keamanan -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🔐 Keamanan</h3>
+          
+          <div class="form-group">
+            <label for="currentPassword">Password Saat Ini</label>
+            <input type="password" id="currentPassword" placeholder="Masukkan password saat ini">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newPassword">Password Baru</label>
+              <input type="password" id="newPassword" placeholder="Masukkan password baru">
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Konfirmasi Password</label>
+              <input type="password" id="confirmPassword" placeholder="Konfirmasi password baru">
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Autentikasi Dua Faktor</div>
+              <div class="setting-description">Keamanan tambahan untuk akun Anda</div>
+            </div>
+            <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lokasi -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">📍 Lokasi</h3>
+          
+          <div class="form-group">
+            <label for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="3" placeholder="Masukkan alamat lengkap Anda">Jl. Sudirman No. 123, Jakarta Pusat, DKI Jakarta 10270</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">Kota</label>
+              <select id="city">
+                <option value="jakarta">Jakarta</option>
+                <option value="surabaya">Surabaya</option>
+                <option value="bandung">Bandung</option>
+                <option value="medan">Medan</option>
+                <option value="semarang">Semarang</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="postalCode">Kode Pos</label>
+              <input type="text" id="postalCode" value="10270">
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Akses Lokasi</div>
+              <div class="setting-description">Izinkan aplikasi mengakses lokasi Anda</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tombol Aksi -->
+      <div class="settings-card">
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="resetForm()">↩️ Reset</button>
+          <button type="button" class="btn btn-primary" onclick="saveSettings()">💾 Simpan Perubahan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let profileDropdownActive = false;
+
+    function toggleProfileDropdown() {
+      const dropdown = document.getElementById('profileDropdown');
+      const arrow = document.querySelector('.dropdown-arrow');
+      
+      profileDropdownActive = !profileDropdownActive;
+      
+      if (profileDropdownActive) {
+        dropdown.classList.add('active');
+        arrow.classList.add('active');
+      } else {
+        dropdown.classList.remove('active');
+        arrow.classList.remove('active');
+      }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const userProfile = document.querySelector('.user-profile');
+      if (!userProfile.contains(event.target) && profileDropdownActive) {
+        toggleProfileDropdown();
+      }
+    });
+
+    function toggleSetting(element) {
+      element.classList.toggle('active');
+    }
+
+    function showAlert(message, type = 'success') {
+      const alertContainer = document.getElementById('alertContainer');
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type} show`;
+      alert.textContent = message;
+      
+      alertContainer.appendChild(alert);
+      
+      setTimeout(() => {
+        alert.classList.remove('show');
+        setTimeout(() => {
+          alertContainer.removeChild(alert);
+        }, 300);
+      }, 3000);
+    }
+
+    function saveSettings() {
+      // Simulate saving
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      
+      if (!firstName || !lastName || !email) {
+        showAlert('Mohon lengkapi semua field yang diperlukan!', 'warning');
+        return;
+      }
+      
+      // Simulate API call
+      setTimeout(() => {
+        showAlert('Pengaturan berhasil disimpan!', 'success');
+      }, 500);
+    }
+
+    function resetForm() {
+      if (confirm('Apakah Anda yakin ingin mereset semua perubahan?')) {
+        location.reload();
+      }
+    }
+
+    function handleLogout() {
+      if (confirm('Apakah Anda yakin ingin keluar dari akun?')) {
+        // Simulate logout
+        showAlert('Logout berhasil! Mengalihkan...', 'success');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1500);
+      }
+    }
+
+    // Initialize form
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add any initialization code here
+      console.log('Settings page initialized');
+    });
+  </script>
+</body>
+</html>

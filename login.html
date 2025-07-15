@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -15,11 +15,11 @@
     </div>
     <div class="login-right">
       <h2>MASUK</h2>
-      <input type="email" placeholder="Masukan Email" />
-      <input type="password" placeholder="Masukan Kata Sandi" />
+      <input type="email" placeholder="Masukan Email" id="email" />
+      <input type="password" placeholder="Masukan Kata Sandi" id="password" />
       <div class="forgot"><a href="forgot-password.html">Lupa kata sandi ?</a></div>
 
-      <!-- ✅ Perbaikan di sini: pakai onclick="login()" -->
+      <!-- Tombol Login -->
       <button onclick="login()" class="login-btn">Sign in</button>
 
       <div class="separator">Or sign in with</div>
@@ -31,10 +31,21 @@
   </div>
 </div>
 
+<!-- Script login -->
 <script>
   function login() {
+    // Simulasi login sukses
     localStorage.setItem('isLoggedIn', 'true');
+    
+    // Redirect kembali ke halaman utama
     window.location.href = 'index.html';
+  }
+</script>
+
+<script>
+  function login() {
+    localStorage.setItem('isLoggedIn', 'true'); // Set login
+    window.location.href = 'index.html'; // Kembali ke halaman utama
   }
 </script>
 

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan - Dashboard Indista</title>
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ffebee;
+      --background: #fff;
+      --text: #000;
+      --text-light: #666;
+      --accent: #f8f8f8;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --info: #2196f3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--accent);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #000;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo-area img {
+      width: 175px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .user-role {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .main-content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2rem;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .breadcrumb-item {
+      color: var(--text-light);
+    }
+
+    .breadcrumb-item.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .breadcrumb-separator {
+      color: #ccc;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .settings-container {
+      display: grid;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .settings-card {
+      background: var(--background);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .settings-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .settings-section {
+      margin-bottom: 2rem;
+    }
+
+    .settings-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: var(--primary-light);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .setting-item:hover {
+      background: #fce4ec;
+    }
+
+    .setting-info {
+      flex: 1;
+    }
+
+    .setting-label {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .setting-description {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch.active {
+      background: var(--primary);
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .toggle-switch.active::before {
+      left: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #388e3c;
+    }
+
+    .btn-warning {
+      background: var(--warning);
+      color: white;
+    }
+
+    .btn-warning:hover {
+      background: #f57c00;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #d32f2f;
+    }
+
+    .btn-info {
+      background: var(--info);
+      color: white;
+    }
+
+    .btn-info:hover {
+      background: #1976d2;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .danger-zone {
+      background: #fff5f5;
+      border: 2px solid #fecaca;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .danger-zone h4 {
+      color: var(--danger);
+      margin-bottom: 1rem;
+    }
+
+    .language-select {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-option.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .language-option:hover {
+      border-color: var(--primary);
+    }
+
+    .theme-preview {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .theme-option {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .theme-option.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .theme-option:hover {
+      border-color: var(--primary);
+    }
+
+    .theme-preview-box {
+      width: 100%;
+      height: 60px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-light .theme-preview-box {
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      border: 1px solid #e0e0e0;
+    }
+
+    .theme-dark .theme-preview-box {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+
+    .theme-auto .theme-preview-box {
+      background: linear-gradient(135deg, #fff 0%, #fff 50%, #2c3e50 50%, #34495e 100%);
+    }
+
+    .notification-schedule {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .schedule-item {
+      padding: 1rem;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .schedule-item input[type="time"] {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .privacy-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .data-usage {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .usage-bar {
+      width: 200px;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .usage-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--success), var(--warning));
+      transition: width 0.3s ease;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .alert-success {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+
+    .alert-warning {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+    }
+
+    .alert-danger {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .main-content {
+        padding: 1rem;
+      }
+
+      .setting-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .language-select {
+        flex-direction: column;
+      }
+
+      .theme-preview {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-area">
+      <img src="https://via.placeholder.com/175x50/d32f2f/ffffff?text=INDISTA" alt="Logo Indista" class="logo">
+    </div>
+    <nav class="nav">
+      <span class="nav-item">PRODUK KAMI</span>
+      <span class="nav-item">PUSAT BANTUAN</span>
+      <span class="nav-item">HUBUNGI KAMI</span>
+    </nav>
+    
+    <div class="user-profile">
+      <img src="https://via.placeholder.com/35x35/d32f2f/ffffff?text=JD" alt="User Avatar" class="user-avatar">
+      <div class="user-info">
+        <span class="user-name">John Doe</span>
+        <span class="user-role">Premium Member</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="breadcrumb">
+      <span class="breadcrumb-item">Dashboard</span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item active">Pengaturan</span>
+    </div>
+
+    <div class="page-header">
+      <h1 class="page-title">⚙️ Pengaturan</h1>
+      <p class="page-subtitle">Sesuaikan preferensi aplikasi dan akun Anda</p>
+    </div>
+
+    <div class="settings-container">
+      <!-- Notifikasi -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🔔 Pengaturan Notifikasi</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi Email</div>
+              <div class="setting-description">Terima notifikasi melalui email</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi Push</div>
+              <div class="setting-description">Notifikasi langsung ke browser</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi SMS</div>
+              <div class="setting-description">Terima SMS untuk transaksi penting</div>
+            </div>
+            <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Notifikasi Promosi</div>
+              <div class="setting-description">Dapatkan info penawaran khusus</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="notification-schedule">
+            <div class="schedule-item">
+              <label>Jam Tenang Mulai:</label>
+              <input type="time" value="22:00">
+            </div>
+            <div class="schedule-item">
+              <label>Jam Tenang Selesai:</label>
+              <input type="time" value="07:00">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Keamanan -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🛡️ Keamanan & Privasi</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Autentikasi Dua Faktor (2FA)</div>
+              <div class="setting-description">Keamanan tambahan untuk akun Anda</div>
+            </div>
+            <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Login Otomatis</div>
+              <div class="setting-description">Tetap login untuk 30 hari</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Verifikasi Login Baru</div>
+              <div class="setting-description">Konfirmasi saat login dari perangkat baru</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-info" onclick="showModal('passwordModal')">🔑 Ubah Password</button>
+            <button class="btn btn-warning" onclick="showModal('sessionModal')">📱 Kelola Sesi Login</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tampilan -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🎨 Tampilan & Tema</h3>
+          
+          <div class="form-group">
+            <label>Pilih Tema:</label>
+            <div class="theme-preview">
+              <div class="theme-option theme-light active" onclick="selectTheme('light')">
+                <div class="theme-preview-box"></div>
+                <div>Terang</div>
+              </div>
+              <div class="theme-option theme-dark" onclick="selectTheme('dark')">
+                <div class="theme-preview-box"></div>
+                <div>Gelap</div>
+              </div>
+              <div class="theme-option theme-auto" onclick="selectTheme('auto')">
+                <div class="theme-preview-box"></div>
+                <div>Otomatis</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Animasi Interface</div>
+              <div class="setting-description">Efek transisi dan animasi</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Mode Hemat Data</div>
+              <div class="setting-description">Kurangi penggunaan data</div>
+            </div>
+            <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Bahasa Interface:</label>
+            <div class="language-select">
+              <div class="language-option active" onclick="selectLanguage('id')">
+                <span>🇮🇩</span>
+                <span>Bahasa Indonesia</span>
+              </div>
+              <div class="language-option" onclick="selectLanguage('en')">
+                <span>🇺🇸</span>
+                <span>English</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lokasi & Pembayaran -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">📍 Lokasi & Pembayaran</h3>
+          
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-label">Akses Lokasi</div>
+              <div class="setting-description">Untuk pencarian kendaraan terdekat</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="defaultCity">Kota Default:</label>
+            <select id="defaultCity">
+              <option value="jakarta">Jakarta</option>
+              <option value="surabaya">Surabaya</option>
+              <option value="bandung">Bandung</option>
+              <option value="medan">Medan</option>
+              <option value="semarang">Semarang</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="paymentMethod">Metode Pembayaran Utama:</label>
+            <select id="paymentMethod">
+              <option value="bca">BCA</option>
+              <option value="mandiri">Mandiri</option>
+              <option value="bni">BNI</option>
+              <option value="bri">BRI</option>
+              <option value="qris">QRIS</option>
+              <option value="gopay">GoPay</option>
+              <option value="ovo">OVO</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-info" onclick="showModal('addressModal')">📍 Kelola Alamat</button>
+            <button class="btn btn-primary" onclick="showModal('paymentModal')">💳 Kelola Pembayaran</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data & Privasi -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">📊 Data & Privasi</h3>
+          
+          <div class="data-usage">
+            <div>
+              <div class="setting-label">Penggunaan Data Bulan Ini</div>
+              <div class="setting-description">2.3 GB dari 5 GB</div>
+            </div>
+            <div class="usage-bar">
+              <div class="usage-progress" style="width: 46%"></div>
+            </div>
+          </div>
+
+          <div class="privacy-item">
+            <div>
+              <div class="setting-label">Bagikan Data Analytics</div>
+              <div class="setting-description">Membantu meningkatkan layanan</div>
+            </div>
+            <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="privacy-item">
+            <div>
+              <div class="setting-label">Riwayat Pencarian</div>
+              <div class="setting-description">Simpan pencarian untuk saran</div>
+            </div>
+            <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-info" onclick="downloadData()">📥 Unduh Data Saya</button>
+            <button class="btn btn-warning" onclick="clearHistory()">🗑️ Hapus Riwayat</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zona Bahaya -->
+      <div class="settings-card">
+        <div class="settings-section">
+          <h3 class="section-title">🚨 Zona Bahaya</h3>
+          
+          <div class="danger-zone">
+            <h4>⚠️ Tindakan Tidak Dapat Dibatalkan</h4>
+            <p>Tindakan di bawah ini akan mengubah akun Anda secara permanen.</p>
+            
+            <div class="form-actions">
+              <button class="btn btn-warning" onclick="showModal('resetModal')">🔄 Reset Semua Pengaturan</button>
+              <button class="btn btn-danger" onclick="showModal('deleteModal')">🗑️ Hapus Akun</button>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-secondary" onclick="showModal('logoutModal')">🚪 Logout dari Semua Perangkat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🔑 Ubah Password</h3>
+        <button class="close-modal" onclick="closeModal('passwordModal')">&times;</button>
+      </div>
+      <form>
+        <div class="form-group">
+          <label>Password Lama:</label>
+          <input type="password" required>
+        </div>
+        <div class="form-group">
+          <label>Password Baru:</label>
+          <input type="password" required>
+        </div>
+        <div class="form-group">
+          <label>Konfirmasi Password:</label>
+          <input type="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('passwordModal')">Batal</button>
+          <button type="submit" class="btn btn-primary">💾 Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="sessionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📱 Kelola Sesi Login</h3>
+        <button class="close-modal" onclick="closeModal('sessionModal')">&times;</button>
+      </div>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label">Chrome - Windows</div>
+          <div class="setting-description">Aktif sekarang • Jakarta</div>
+        </div>
+        <button class="btn btn-danger">Logout</button>
+      </div>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label">Mobile App - Android</div>
+          <div class="setting-description">2 jam lalu • Jakarta</div>
+        </div>
+        <button class="btn btn-danger">Logout</button>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-danger" onclick="closeModal('sessionModal')">🚪 Logout Semua</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🚪 Konfirmasi Logout</h3>
+        <button class="close-modal" onclick="closeModal('logoutModal')">&times;</button>
+      </div>
+      <p>Apakah Anda yakin ingin logout dari semua perangkat?</p>
+      <div class="form-actions">
+        <button class="btn btn-secondary" onclick="closeModal('logoutModal')">Batal</button>
+        <button class="btn btn-danger" onclick="handleLogout()">Ya, Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resetModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🔄 Reset Pengaturan</h3>
+        <button class="close-modal" onclick="closeModal('resetModal

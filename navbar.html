@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Indista</title>
+    <style>
+ html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-area img {
+            width: 175px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #ff0000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-icon {
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-item img {
+            display: inline-block;
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            display: none;
+            color: #333;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
+            color: #ff0000;
+        }
+
+        /* Login Button */
+        .login-button {
+            background: red;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3);
+        }
+
+        .login-button:hover {
+            background: darkred;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        /* User Profile Styles */
+        .user-profile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-profile:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            display: none;
+            color: #333;
+        }
+
+        .user-profile:hover .user-dropdown {
+            display: block;
+        }
+
+        .user-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .user-dropdown-item:hover {
+            background-color: #f5f5f5;
+            color: #ff0000;
+        }
+
+        .user-dropdown-item.active {
+            background-color: #fff3f3;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .user-dropdown-item.logout {
+            border-top: 1px solid #e0e0e0;
+            margin-top: 8px;
+            color: #dc3545;
+        }
+
+        .user-profile .dropdown-icon {
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .user-profile:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .user-dropdown-item span {
+            font-size: 16px;
+        }
+
+        /* Hide/Show Elements */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .nav {
+                gap: 20px;
+            }
+
+            .nav-item {
+                font-size: 13px;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .dropdown-menu, .user-dropdown {
+                min-width: 200px;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Logo Indista" class="logo">
+        </div>
+
+        <nav class="nav">
+            <div class="nav-item dropdown">
+                <span>PRODUK KAMI</span>
+                <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <div class="dropdown-menu">
+                    <a href="daftarcar.html" class="dropdown-item">
+                        <img src="images/checkmark.png" alt="Sewa Icon" width="16" height="16" />
+                        SEWA KENDARAAN
+                    </a>
+                    <a href="layanandigital.html" class="dropdown-item">
+                        <img src="images/business.png" alt="Bisnis Icon" width="16" height="16" />
+                        LAYANAN HIBURAN
+                    </a>
+                </div>
+            </div>
+            <a href="pusatbantuan.html" class="nav-item">PUSAT BANTUAN</a>
+            <a href="#footer" class="nav-item">HUBUNGI KAMI</a>
+        </nav>
+
+        <!-- Login Button (Default) -->
+        <button id="loginBtn" class="login-button" onclick="handleLogin()">LOGIN</button>
+
+
+        <!-- User Profile (Hidden by default) -->
+        <div id="userProfile" class="user-profile hidden">
+            <img src="images/profil.png" alt="User Avatar" class="user-avatar">
+            <div class="user-info">
+                <span class="user-name">Oktavia</span>
+            </div>
+        
+                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+            <div class="user-dropdown">
+                <a href="riwayatpembelian.html" class="user-dropdown-item">
+                    <span>📋</span>
+                    Riwayat Pembelian
+                </a>
+                <a href="pengaturan2.html" class="user-dropdown-item">
+                    <span>⚙️</span>
+                    Pengaturan
+                </a>
+                <a href="#" class="user-dropdown-item logout" onclick="handleLogout()">
+                    <span>🚪</span>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Check if user is logged in from localStorage (in real app)
+        let isLoggedIn = false;
+
+        // Function to handle login
+        function handleLogin() {
+            // Simulate login process
+            isLoggedIn = true;
+            
+            // Hide login button and show user profile
+            document.getElementById('loginBtn').classList.add('hidden');
+            document.getElementById('userProfile').classList.remove('hidden');
+            
+            // In real application, you would redirect to login page
+            // window.location.href = 'login.html';
+        }
+
+        // Function to handle logout
+        function handleLogout() {
+            // Simulate logout process
+            isLoggedIn = false;
+            
+            // Show login button and hide user profile
+            document.getElementById('loginBtn').classList.remove('hidden');
+            document.getElementById('userProfile').classList.add('hidden');
+            
+            // In real application, you might want to redirect to home page
+            // window.location.href = 'index.html';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in (in real app, check localStorage or session)
+            if (isLoggedIn) {
+                document.getElementById('loginBtn').classList.add('hidden');
+                document.getElementById('userProfile').classList.remove('hidden');
+            }
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const userProfile = document.getElementById('userProfile');
+            const userDropdown = userProfile ? userProfile.querySelector('.user-dropdown') : null;
+            
+            if (userDropdown && !userProfile.contains(event.target)) {
+                userDropdown.style.display = 'none';
+            }
+        });
+
+        // Show dropdown on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const userProfile = document.getElementById('userProfile');
+            
+            if (userProfile) {
+                userProfile.addEventListener('mouseenter', function() {
+                    const dropdown = this.querySelector('.user-dropdown');
+                    if (dropdown) {
+                        dropdown.style.display = 'block';
+                    }
+                });
+                
+                userProfile.addEventListener('mouseleave', function() {
+                    const dropdown = this.querySelector('.user-dropdown');
+                    if (dropdown) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

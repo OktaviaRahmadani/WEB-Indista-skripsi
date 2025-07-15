@@ -7,25 +7,16 @@
     <link rel="stylesheet" href="layanandigital.css">
 </head>
 <body>
-    <!-- === NAVBAR === -->
-  <header class="header">
-    <div class="logo-area">
-      <img src="images/logo.png" alt="Logo Indista" class="logo">
-    </div>
-    <nav class="nav">
-      <div class="nav-item dropdown">
-        <span>PRODUK KAMI</span>
-        <svg class="dropdown-icon" width="12" height="8"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="dropdown-menu">
-          <div class="dropdown-item"><img src="images/checkmark.png" alt="">SEWA KENDARAAN</div>
-          <div class="dropdown-item"><img src="images/business.png" alt="">LAYANAN HIBURAN</div>
-        </div>
-      </div>
-      <span class="nav-item">PUSAT BANTUAN</span>
-      <span class="nav-item">HUBUNGI KAMI</span>
-    </nav>
-    <button onclick="window.location.href='login.html'" class="login-button">LOGIN</button>
-  </header>
+    
+  <div id="navbar"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -166,6 +157,9 @@
 
 
 <script src="script.js"></script>
+
+<script src="navbar.js"></script>
+
 </body>
 
 </body>
