@@ -137,10 +137,8 @@ dropdown {
   font-weight: bold;
 }
 
-
-
 /* ========== HERO SECTION ========== */
- * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -159,6 +157,7 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
+  background-color: #000; /* Tambahan untuk memastikan background hitam */
 }
 
 .hero-image-wrapper {
@@ -170,20 +169,36 @@ body {
   align-items: center;
 }
 
+/* Background hitam paling belakang - Layer 1 */
 .bg-layer {
+  position: fixed; /* Ubah dari absolute ke fixed */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Gunakan viewport width */
+  height: 100vh; /* Gunakan viewport height */
+  background: #000;
+  z-index: -1; /* Layer paling belakang */
+}
+
+/* Alternatif jika ingin tetap absolute */
+.bg-layer-alt {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background: #000;
-  z-index: 0;
-  overflow: hidden;
+  z-index: -1; /* Layer paling belakang */
 }
 
+/* Blur container - Layer 2 - DI BELAKANG MOBIL */
 .blur-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Biar blur di layer bawah */
+  z-index: 1; /* Layer 2 - Di atas background hitam, TETAPI DI BAWAH MOBIL */
   pointer-events: none;
 }
 
@@ -212,15 +227,17 @@ body {
   animation-delay: 1s;
 }
 
+/* Carousel container - Layer 3 - MOBIL DI ATAS BLUR */
 .carrousel-container {
   position: relative;
-  z-index: 3;
+  z-index: 10; /* Layer 3 - TINGGI SEKALI agar mobil pasti di atas blur */
   width: 100%;
   max-width: 800px;
   height: 100%;
   display: flex;
   align-items: center;
   isolation: isolate;
+  background: transparent; /* Pastikan tidak ada background yang menghalangi */
 }
 
 .carrousel-track {
@@ -237,14 +254,28 @@ body {
   max-height: 70vh;
 }
 
+/* Hero text - Layer 4 */
 .hero-text {
   position: absolute;
-  z-index: 4;
+  z-index: 20; /* Layer 4 - Paling depan, di atas mobil */
   color: white;
   text-align: center;
   width: 100%;
   padding: 0 20px;
   pointer-events: none;
+}
+
+/* Tambahan untuk memastikan tidak ada gap */
+html, body {
+  height: 100%;
+  background-color: #000;
+}
+
+/* Untuk navbar jika ada - Layer 5 */
+.navbar {
+  position: relative;
+  z-index: 50; /* Layer 5 - Di atas semua elemen hero */
+  background-color: #000;
 }
 
 @keyframes float {
@@ -270,7 +301,6 @@ body {
     opacity: 0.8;
   }
 }
-
 
 /* ========== CAR SEARCH SECTION ========== */
 .car-search {
@@ -378,7 +408,7 @@ body {
   background: darkred;
 }
 
-/* ✏️ Tambahkan ini untuk menyamakan style select seperti input */
+
 .select-field {
   padding: 14px 16px;
   border-radius: 10px;

@@ -43,11 +43,179 @@
 </script>
 
 <script>
-  function login() {
-    localStorage.setItem('isLoggedIn', 'true'); // Set login
-    window.location.href = 'index.html'; // Kembali ke halaman utama
+  // Fungsi untuk mengecek status login
+  function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    return isLoggedIn === 'true';
   }
+
+  // Fungsi untuk update navbar berdasarkan status login
+  function updateNavbar() {
+    const isLoggedIn = checkLoginStatus();
+    
+    // Cari tombol login di navbar
+    const loginBtn = document.querySelector('.login-button, .btn-login, [onclick="goToLogin()"]');
+    
+    if (isLoggedIn && loginBtn) {
+      // Ganti tombol login dengan profil
+      loginBtn.innerHTML = `
+        <div class="profile-dropdown">
+          <button class="profile-btn" onclick="toggleProfile()">
+            <img src="images/profile-icon.png" alt="Profile" style="width: 20px; height: 20px; border-radius: 50%; margin-right: 5px;">
+            Profil
+          </button>
+          <div class="profile-menu" id="profileMenu" style="display: none; position: absolute; background: white; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); min-width: 150px; z-index: 1000; margin-top: 5px;">
+            <a href="profil.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333;">Lihat Profil</a>
+            <a href="pengaturan.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333;">Pengaturan</a>
+            <a href="riwayatpembelian.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333;">Riwayat</a>
+            <hr style="margin: 0; border: none; border-top: 1px solid #eee;">
+            <a href="#" onclick="logout()" style="display: block; padding: 10px 15px; text-decoration: none; color: #333;">Logout</a>
+          </div>
+        </div>
+      `;
+      loginBtn.onclick = null; // Hapus onclick lama
+    }
+  }
+
+  // Fungsi untuk toggle profile menu
+  function toggleProfile() {
+    const menu = document.getElementById('profileMenu');
+    if (menu) {
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+  }
+
+  // Fungsi logout
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    window.location.href = 'login.html';
+  }
+
+  // Fungsi untuk redirect ke login
+  function goToLogin() {
+    window.location.href = 'login.html';
+  }
+
+  // Fungsi untuk proteksi halaman yang memerlukan login
+  function requireLogin() {
+    if (!checkLoginStatus()) {
+      alert('Anda harus login terlebih dahulu');
+      window.location.href = 'login.html';
+      return false;
+    }
+    return true;
+  }
+
+  // Jalankan saat halaman dimuat
+  document.addEventListener('DOMContentLoaded', function() {
+    updateNavbar();
+    
+    // Close profile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('profileMenu');
+      const profileBtn = document.querySelector('.profile-btn');
+      
+      if (menu && profileBtn && !profileBtn.contains(event.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  });
 </script>
+
+<script>
+  function checkLoginStatus() {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  function login() {
+    const email = document.getElementById('email')?.value;
+    const password = document.getElementById('password')?.value;
+
+    if (email && password) {
+      // Simpan status login
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', email);
+
+      // Redirect ke tujuan yang disimpan (jika ada)
+      const redirectUrl = localStorage.getItem('redirectAfterLogin');
+      if (redirectUrl) {
+        localStorage.removeItem('redirectAfterLogin');
+        window.location.href = redirectUrl;
+      } else {
+        window.location.href = 'index.html'; // fallback
+      }
+    } else {
+      alert('Harap masukkan email dan password');
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('redirectAfterLogin');
+    window.location.href = 'login.html';
+  }
+
+  function goToLogin() {
+    window.location.href = 'login.html';
+  }
+
+  function requireLogin() {
+    if (!checkLoginStatus()) {
+      alert('Anda harus login terlebih dahulu');
+      window.location.href = 'login.html';
+      return false;
+    }
+    return true;
+  }
+
+  function updateNavbar() {
+    const isLoggedIn = checkLoginStatus();
+    const loginBtn = document.querySelector('.login-button, .btn-login, [onclick="goToLogin()"]');
+
+    if (isLoggedIn && loginBtn) {
+      loginBtn.innerHTML = `
+        <div class="profile-dropdown">
+          <button class="profile-btn" onclick="toggleProfile()">
+            <img src="images/profile-icon.png" alt="Profile" style="width: 20px; height: 20px; border-radius: 50%; margin-right: 5px;">
+            Profil
+          </button>
+          <div class="profile-menu" id="profileMenu" style="display: none; position: absolute; background: white; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); min-width: 150px; z-index: 1000; margin-top: 5px;">
+            <a href="profil.html" style="display: block; padding: 10px 15px;">Lihat Profil</a>
+            <a href="pengaturan.html" style="display: block; padding: 10px 15px;">Pengaturan</a>
+            <a href="riwayatpembelian.html" style="display: block; padding: 10px 15px;">Riwayat</a>
+            <hr style="margin: 0; border-top: 1px solid #eee;">
+            <a href="#" onclick="logout()" style="display: block; padding: 10px 15px;">Logout</a>
+          </div>
+        </div>`;
+      loginBtn.onclick = null;
+    }
+  }
+
+  function toggleProfile() {
+    const menu = document.getElementById('profileMenu');
+    if (menu) {
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+  }
+
+  // Jalankan saat halaman dimuat
+  document.addEventListener('DOMContentLoaded', function () {
+    updateNavbar();
+
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById('profileMenu');
+      const profileBtn = document.querySelector('.profile-btn');
+
+      if (menu && profileBtn && !profileBtn.contains(event.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
 
 </body>
 </html>

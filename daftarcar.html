@@ -201,7 +201,38 @@ blurCircles.forEach(circle => {
 </script>
 
 <script src="navbar.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const selected = localStorage.getItem('selectedKendaraan');
+  if (!selected) return;
 
-<script src="navbar.js"></script>
+  const cards = document.querySelectorAll('.car-card');
+  let found = false;
+
+  cards.forEach(card => {
+    const title = card.querySelector('.car-title').textContent.trim().toUpperCase();
+    if (title.includes(selected.toUpperCase())) {
+      card.style.display = 'block';
+      found = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  // Jika tidak ditemukan kendaraan yang cocok, tampilkan pesan
+  if (!found) {
+    const msg = document.createElement('p');
+    msg.textContent = `Kendaraan "${selected}" tidak ditemukan.`;
+    msg.style.textAlign = 'center';
+    msg.style.padding = '40px';
+    msg.style.color = 'red';
+    document.querySelector('.cars-section').appendChild(msg);
+  }
+
+  // Setelah digunakan, hapus dari localStorage
+  localStorage.removeItem('selectedKendaraan');
+});
+</script>
+
 </body>
 </html>

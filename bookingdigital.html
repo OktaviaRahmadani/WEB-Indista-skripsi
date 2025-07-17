@@ -151,6 +151,153 @@
       margin-top: 10px;
       color: #333;
     }
+
+    
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .close:hover {
+      color: #333;
+    }
+
+    .lock-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .lock-body {
+      width: 50px;
+      height: 35px;
+      background: #f39c12;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .lock-shackle {
+      width: 40px;
+      height: 40px;
+      border: 8px solid #7fb3d3;
+      border-bottom: none;
+      border-radius: 40px 40px 0 0;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .lock-keyhole {
+      width: 8px;
+      height: 8px;
+      background: #d35400;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .lock-keyhole:after {
+      content: '';
+      width: 3px;
+      height: 8px;
+      background: #d35400;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .modal-text {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-width: 120px;
+    }
+
+    .login-btn {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .login-btn:hover {
+      background: #c0392b;
+    }
+
+    .register-btn {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .register-btn:hover {
+      background: #c0392b;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        padding: 30px 20px;
+      }
+      
+      .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -227,19 +374,87 @@
           <label for="email">Masukkan Info Kontak</label>
           <input type="email" id="email" name="email" placeholder="contoh@gmail.com" required>
         </div>
-        <button type="submit" class="submit-button">Beli Sekarang</button>
+        <button type="button" class="submit-button" onclick="showModal()">Beli Sekarang</button>
       </form>
     </div>
   </div>
-  <script>
-    const options = document.querySelectorAll('.payment-option');
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        options.forEach(o => o.classList.remove('selected'));
-        option.classList.add('selected');
-        option.querySelector('input').checked = true;
-      });
-    });
-  </script>
+  
+  <div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    
+    <div class="lock-icon">
+      <div class="lock-shackle"></div>
+      <div class="lock-body">
+        <div class="lock-keyhole"></div>
+      </div>
+    </div>
+    
+    <div class="modal-text">
+      Silakan login terlebih dahulu untuk melanjutkan pembelian layanan digital Anda.
+    </div>
+    
+    <div class="modal-buttons">
+      <button class="modal-btn login-btn" onclick="handleLogin()">Login Sekarang</button>
+      <button class="modal-btn register-btn" onclick="handleRegister()">Daftar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function checkLoginStatus() {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  function showModal() {
+    if (checkLoginStatus()) {
+      // Jika sudah login, submit form
+      document.querySelector('form').submit();
+    } else {
+      // Jika belum login, tampilkan modal
+      document.getElementById('loginModal').style.display = 'block';
+    }
+  }
+
+  function closeModal() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  function handleLogin() {
+  localStorage.setItem('redirectAfterLogin', window.location.href);
+  window.location.href = 'login.html';
+}
+
+
+  function handleRegister() {
+    localStorage.setItem('redirectAfterLogin', window.location.href);
+    window.location.href = 'register.html';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+  function showModal() {
+  if (checkLoginStatus()) {
+    // Jika sudah login, lanjutkan
+    window.location.href = "paymentdigital.html"; // atau booking.html
+  } else {
+    // Simpan tujuan setelah login
+    localStorage.setItem('redirectAfterLogin', 'paymentdigital.html');
+    document.getElementById('loginModal').style.display = 'block';
+  }
+}
+function handleLogin() {
+  const redirect = localStorage.getItem('redirectAfterLogin') || 'paymentdigital.html';
+  window.location.href = 'login.html';
+}
+
+</script>
+
+
 </body>
 </html>

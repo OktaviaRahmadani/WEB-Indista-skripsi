@@ -82,13 +82,14 @@
     <label for="kendaraan">Kendaraan</label> 
     <select id="kendaraan" class="select-field"> 
       <option disabled selected>Pilih Kendaraan</option>
-      <option>DFSK G560 1.5 CVT Turbo – Terios</option>
+      <option value="dfsk">DFSK 580 1.5 CVT TURBO - TERIOS</option>
       <option>Wuling Confero S</option>
       <option>Wuling Cortez 1.5 CVT Turbo – Innova</option>
       <option>Suzuki Carry Pick Up</option>
       <option>Viar Vintech 200</option>
       <option>Viar V1 200</option>
     </select>
+
   </div>
 </div>
 
@@ -113,7 +114,7 @@
 
       <div class="form-bottom">
         <p>Semua harga tidak termasuk supir</p>
-        <button class="search-btn">CARI MOBIL</button>
+        <button class="search-btn" onclick="cariMobil()">CARI MOBIL</button>
       </div>
     </div>
   </div>
@@ -199,7 +200,7 @@
         <div class="journey-content">
             <h2>PERJALANAN LANCAR MULAI DARI KENDARAAN TERBAIK!</h2>
             <p>Beragam pilihan kendaraan siap menemani perjalanan Anda mulai dari city car hingga MPV. Armada terawat, bersih, dan siap jalan kapan saja. Booking cepat, harga transparan, perjalanan jadi bebas repot.</p>
-            <button class="selengkapnya-btn">Selengkapnya</button>
+           <button class="selengkapnya-btn" onclick="window.location.href='daftarcar.html'">Selengkapnya</button>
         </div>
     </section>
 
@@ -364,7 +365,7 @@ function getBotReply(msg) {
   if (msg.includes("lepas kunci")) return "Ya, tersedia layanan lepas kunci. Syaratnya cukup SIM A dan KTP aktif.";
   if (msg.includes("lokasi") || msg.includes("alamat")) return "Lokasi kami di Alexandria Purple, Cimanggis - Depok.";
   if (msg.includes("bayar")) return "Pembayaran bisa melalui transfer bank, QRIS, dan pembayaran tunai di kantor.";
-  if (msg.includes("dp") || msg.includes("uang muka")) return "Kami menerima DP minimal 30% untuk pemesanan kendaraan.";
+  if (msg.includes("dp") || msg.includes("uang muka")) return "Kami menerima DP minimal 50% untuk pemesanan kendaraan.";
   if (msg.includes("kontak") || msg.includes("hubungi")) return "Hubungi kami via WhatsApp di 0812-3456-7890 atau email marketing.indista@gmail.com.";
   if (msg.includes("durasi")) return "Penyewaan bisa mulai dari 6 jam, 12 jam, harian, mingguan, hingga bulanan.";
   if (msg.includes("ganti tanggal")) return "Kamu bisa mengubah tanggal sewa maksimal H-1 sebelum jadwal.";
@@ -379,6 +380,34 @@ function getBotReply(msg) {
  </script>
  
 <script src="navbar.js"></script>
+<script>
+document.querySelector('.search-btn').addEventListener('click', function () {
+  const selectedKendaraan = document.getElementById('kendaraan').value;
+
+  if (!selectedKendaraan || selectedKendaraan === 'Pilih Kendaraan') {
+    alert('Silakan pilih jenis kendaraan terlebih dahulu.');
+    return;
+  }
+
+  // Simpan ke sessionStorage
+  sessionStorage.setItem('filterKendaraan', selectedKendaraan);
+
+  // Arahkan ke halaman daftar mobil
+  window.location.href = 'daftarcar.html';
+});
+</script>
+<script>
+function cariMobil() {
+  const kendaraan = document.getElementById('kendaraan').value;
+  if (!kendaraan || kendaraan === "Pilih Kendaraan") {
+    alert("Silakan pilih kendaraan terlebih dahulu.");
+    return;
+  }
+  localStorage.setItem('selectedKendaraan', kendaraan);
+  window.location.href = 'daftarcar.html';
+}
+</script>
+
 
 </body>
 </html>
